@@ -9,6 +9,7 @@ int filehandle_init();
 int main() {
 
 	filehandle_init();
-		
+	
+	aluno->alterarNome ("carlos")
 }
 
