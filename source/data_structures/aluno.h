@@ -33,7 +33,6 @@ typedef struct Aluno{    //definir a estrutura do aluno e suas propriedadas
 
 void* alterar_nome(Aluno* self, char* nome){
 	self->nome = nome;
-
 }
        
 void* alterar_nascimento(Aluno* self, Data nascimento) {
