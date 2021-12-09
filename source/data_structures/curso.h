@@ -14,19 +14,16 @@ typedef struct Curso {
 } Curso;
 
 
-Curso* setData(Curso* self, char* nome, char* numero) {
+void* setData(Curso* self, char* nome, char* numero) {
 	self->nome = nome;
 	self->numero = numero;
-
-
-	return self;
 }
 
 Curso* curso_create() {
 	Curso* obj = (Curso*) malloc(sizeof(Curso));
 
 	if (obj == NULL) {
-		return curso_create();
+		return NULL;
 	}
 	obj->set = setData;
 

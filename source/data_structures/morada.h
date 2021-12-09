@@ -27,20 +27,18 @@ void toString(Morada* self) {
 	sprintf_s(self->string, len + 1, "%s %d %s", self->rua, self->porta, self->codPostal);
 }
 
-Morada* setData(Morada* self, char* rua, char* codPostal, int signed porta) {
+void* setData(Morada* self, char* rua, char* codPostal, int signed porta) {
 	self->codPostal = codPostal;
 	self->rua = rua;
 	self->porta = porta;
 	toString(self);
-
-	return self;
 }
 
 Morada* morada_create() {
 	Morada *obj = (Morada*) malloc(sizeof(Morada));
 
 	if (obj == NULL) {
-		return morada_create();
+		return NULL;
 	}
 
 	obj->set = setData;
