@@ -5,6 +5,7 @@
 /source/*.sln
 /source/*.vcxproj
 /source/*.vcxproj.filters
+/workspace.code-workspace
 # User-specific files
 *.rsuser
 *.suo
