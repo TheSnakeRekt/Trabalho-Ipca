@@ -1,3 +1,5 @@
+#pragma once 
+
 enum data_types {
     Aluno_T = 1,
     Morada_T = 2,

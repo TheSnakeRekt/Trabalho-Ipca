@@ -20,4 +20,3 @@ int main() {
 
 	printf("%s", serialize(*aluno));
 }
-

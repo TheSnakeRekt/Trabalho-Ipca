@@ -1,3 +1,5 @@
+#pragma once
+
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
@@ -20,10 +22,10 @@ typedef struct Morada {
 
 void toString(Morada* self) {
 	size_t len = 0;
-	len = snprintf(NULL, len, "%s %d $s", self->rua, self->porta, self->codPostal);
+	len = snprintf(NULL, len, "%s %d %s", self->rua, self->porta, self->codPostal);
 	
 	
-	sprintf_s(self->string, len + 1, "%s %d %s", self->rua, self->porta, self->codPostal);
+	sprintf(self->string, "%s %d %s", self->rua, self->porta, self->codPostal);
 }
 
 void* setData(Morada* self, char* rua, char* codPostal, int signed porta) {
@@ -48,13 +50,14 @@ Morada* morada_create() {
 char* serializeMorada(Morada mo)
 {
 	size_t len = 0;
-	len = snprintf(NULL, len, "%s,%d,$s", mo.rua, mo.porta, mo.codPostal);
+	len = snprintf(NULL, len, "%s,%d,%s", mo.rua, mo.porta, mo.codPostal);
 
-	char* apstr;
+	char* apstr = '\0';
+	signed int lenS = len + 1;
 
-	if (snprintf(apstr, len + 1, "%s,%d,$s", mo.rua, mo.porta, mo.codPostal) > len + 1)
+	if (snprintf(apstr, len + 1, "%s,%d,%s", mo.rua, mo.porta, mo.codPostal) > lenS)
 	{
-		printf("A Morada nao foi serializado.");
+		printf("A Morada nao foi serializada.");
 		return NULL;
 	}
 

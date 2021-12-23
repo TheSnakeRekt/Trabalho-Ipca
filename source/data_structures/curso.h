@@ -1,6 +1,7 @@
+#pragma once
+
 #include <stdio.h>
 #include <malloc.h>
-#include "types.h"
 
 struct Curso;
 typedef void* (*set)(struct Curso* self, char* nome, char* numero);

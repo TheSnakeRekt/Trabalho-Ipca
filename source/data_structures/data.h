@@ -1,8 +1,9 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
-#include "types.h"
 
 struct Data;
 
@@ -14,7 +15,7 @@ typedef struct Data {
 	signed int dia, mes, ano;
 
 	set set;
-}Data;
+} Data;
 
 void toString(Data* self) {
 

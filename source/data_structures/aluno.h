@@ -1,10 +1,11 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include "morada.h"
 #include "data.h"
 #include "curso.h"
-#include "types.h"
 
 struct Aluno;
 typedef void* (*alterarNome)(Aluno* self, char* nome);     // sao pointers
