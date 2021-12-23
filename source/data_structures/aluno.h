@@ -18,6 +18,8 @@ typedef struct Aluno{    //definir a estrutura do aluno e suas propriedadas
 
 	char* nome;
 	char* n_mecanografico;
+
+	const int TYPE = Aluno_T;
 	Data dataNascimento;
 	Morada morada; 
 	Curso curso;

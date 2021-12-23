@@ -1,4 +1,5 @@
 #pragma once
+
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +12,7 @@ typedef struct Morada {
 	char* string;
 	char* rua;
 	char* codPostal; 
-	const char* TYPE = "Morada";
+	const int TYPE = Morada_T;
 	int signed porta;
 
 	set set;

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdio.h>
 #include <malloc.h>
 
@@ -8,7 +9,7 @@ typedef void* (*set)(struct Curso* self, char* nome, char* numero);
 typedef struct Curso {
 	char* nome;
 	char* numero;
-	const char* TYPE = "Curso";
+	const int TYPE = Curso_T;
 
 	set set;
 } Curso;

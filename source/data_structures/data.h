@@ -1,15 +1,17 @@
 #pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
+#include "types.h"
 
 struct Data;
 
 typedef void* (*set)(struct Data* self, signed int dia, signed int mes, signed int ano);
 
 typedef struct Data {
-
+	const int TYPE = Data_T;
 	char* string;
 
 	signed int dia, mes, ano;
