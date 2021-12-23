@@ -1,6 +1,6 @@
-enum types {
+enum data_types {
     Aluno_T = 1,
     Morada_T = 2,
     Data_T = 3,
-    Curso_T = 4
-}
+    Curso_T = 4,
+};

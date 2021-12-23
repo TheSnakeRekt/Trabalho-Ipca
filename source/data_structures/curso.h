@@ -1,7 +1,6 @@
-#pragma once
-
 #include <stdio.h>
 #include <malloc.h>
+#include "types.h"
 
 struct Curso;
 typedef void* (*set)(struct Curso* self, char* nome, char* numero);
@@ -9,7 +8,6 @@ typedef void* (*set)(struct Curso* self, char* nome, char* numero);
 typedef struct Curso {
 	char* nome;
 	char* numero;
-	const int TYPE = Curso_T;
 
 	set set;
 } Curso;
@@ -31,7 +29,7 @@ Curso* curso_create() {
 	return obj;
 }
 
-char* serialize(Curso cu)
+char* serializeCurso(Curso cu)
 {
     size_t len = 0;
     len = snprintf(NULL, len, "%s,%s", cu.nome, cu.numero);

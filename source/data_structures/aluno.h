@@ -1,11 +1,10 @@
-#pragma once
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include "morada.h"
 #include "data.h"
 #include "curso.h"
+#include "types.h"
 
 struct Aluno;
 typedef void* (*alterarNome)(Aluno* self, char* nome);     // sao pointers
@@ -14,12 +13,11 @@ typedef void* (*alterarDataNascimento)(Aluno* self, Data d);
 typedef void* (*alterarMorada)(Aluno* self, Morada m);
 typedef void* (*alterarCurso)(Aluno* self, Curso c);
 
-typedef struct Aluno{    //definir a estrutura do aluno e suas propriedadas
+typedef struct Aluno{ //definir a estrutura do aluno e suas propriedadas
 
 	char* nome;
 	char* n_mecanografico;
 
-	const int TYPE = Aluno_T;
 	Data dataNascimento;
 	Morada morada; 
 	Curso curso;
@@ -29,7 +27,7 @@ typedef struct Aluno{    //definir a estrutura do aluno e suas propriedadas
 	alterarNumeroMecanografico alterarNumeroMecanografico;
 	alterarMorada alterarMorada;
 	alterarCurso alterarCurso;
-};
+} Aluno;
 
   //funcao que altera as propriedades dos alunos
 
@@ -63,7 +61,7 @@ Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Mora
 	}
 	
 	obj->nome = nome;
-	obj->n_mecanografico = n_mecanografico;
+	obj->n_mecanografico = *n_mecanografico;
 	obj->dataNascimento = dataNascimento;
 	obj->morada = morada;
 	obj->curso = curso;
@@ -77,15 +75,15 @@ Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Mora
 	return obj; 
 }
 
-char* serialize(Aluno* al) {
+char* serialize(Aluno al) {
 
 	size_t len = 0;
 
-	len = snprintf(NULL, len, "%s,%s,%s,%s,%s;", al->nome, serialize(al->dataNascimento), al->n_mecanografico, serialize(al->morada), serialize(al->curso));
+	len = snprintf(NULL, len, "%s,%s,%s,%s,%s;", al.nome, serializeData(al.dataNascimento), al.n_mecanografico, serializeMorada(al.morada), serializeCurso(al.curso));
 
 	char* apstr;
 
-	if (snprintf(apstr, len + 1, "%s,%s,%s,%s,%s;", al->nome, serialize(al->dataNascimento), al->n_mecanografico, serialize(al->morada), serialize(al->curso)) > len+1)
+	if (snprintf(apstr, len + 1, "%s,%s,%s,%s,%s;", al.nome, serializeData(al.dataNascimento), al.n_mecanografico, serializeMorada(al.morada), serializeCurso(al.curso)) > len+1)
 	{
 		printf("O Aluno nao foi serializado.");
 		return NULL;

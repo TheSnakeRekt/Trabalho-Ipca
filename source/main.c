@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "data_structures/data.h"
-
-
+#include "storage/filehandle.h"
+#include "data_structures/aluno.h"
 
 int main() {
+	filehandle_init();
 
-	Data* date = data_create();
-	Data* date2 = data_create();
+	Data* dataNascimento = data_create();
+	dataNascimento->set(dataNascimento, 11, 4, 1996);
+
+	Morada* morada = morada_create();
+	morada->set(morada, "Travessa da Murteira", "4805-206", 86);
 	
-	
-	date->set(date, 30, 1, 1990);
 
-	date2->set(date2, 10, 02, 1991);
-	printf("%d/%d/%d", date2->dia, date2->mes, date2->ano); 
+	Curso* curso = curso_create();
+	curso->set(curso, "SEC", "C140");
 
-	system("pause");
+	Aluno* aluno = create_aluno("Jorge Guimaraes", "a23065", *dataNascimento, *morada, *curso);
+
+	printf("%s", serialize(*aluno));
 }
 

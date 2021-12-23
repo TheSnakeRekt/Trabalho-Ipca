@@ -1,8 +1,7 @@
-#pragma once
-
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
+#include "types.h"
 
 struct Morada;
 typedef void*  (*set)(struct Morada* self, char* rua, char* codPostal, int signed porta);
@@ -11,8 +10,7 @@ typedef void*  (*set)(struct Morada* self, char* rua, char* codPostal, int signe
 typedef struct Morada {
 	char* string;
 	char* rua;
-	char* codPostal; 
-	const int TYPE = Morada_T;
+	char* codPostal;
 	int signed porta;
 
 	set set;
@@ -47,7 +45,7 @@ Morada* morada_create() {
 	return obj;
 }
 
-char* serialize(Morada mo)
+char* serializeMorada(Morada mo)
 {
 	size_t len = 0;
 	len = snprintf(NULL, len, "%s,%d,$s", mo.rua, mo.porta, mo.codPostal);

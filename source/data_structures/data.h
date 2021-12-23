@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
@@ -11,7 +9,6 @@ struct Data;
 typedef void* (*set)(struct Data* self, signed int dia, signed int mes, signed int ano);
 
 typedef struct Data {
-	const int TYPE = Data_T;
 	char* string;
 
 	signed int dia, mes, ano;
@@ -52,7 +49,7 @@ Data* data_create() {
 	return obj;
 }
 
-char* serialize(Data dat) {
+char* serializeData(Data dat) {
 
 	size_t len = 0;
 	len = snprintf(NULL, len, "%d/%d/%d", dat.dia, dat.mes, dat.ano);

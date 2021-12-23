@@ -17,18 +17,36 @@ int filehandle_init() {
 
 	if (stat(BASE_DIR, &st) == -1) {
 		CreateDirectoryA(BASE_DIR, NULL);
-	
-		for (i = 0; i < STORAGE_LENGTH; i++) {
-			FILE* fp = fopen(STORAGE_NAME[i], "w");
-
-			if (fp != NULL) {
-				fputs("\n", fp);
-				fclose(fp);
-			}
-		}
+		filehandle_init();
 	}
+	for (i = 0; i < STORAGE_LENGTH; i++) {
+		FILE* fp = fopen(STORAGE_NAME[i], "w+");
 
+		if (!fp) {
+			perror("fopen");
+			continue;
+		}
+		fputs("\n", fp);
+		fclose(fp);
+	}
 
 	return i;
 }
 
+
+char* read_file(FILE* fp) {
+	char* buffer;
+
+	fseek(fp, 0, SEEK_END);
+	int lSize = ftell(fp);
+	rewind(fp);
+
+	buffer = (char*)malloc(sizeof(char) * lSize);
+	fread(buffer, 1, lSize, fp);
+
+	return buffer;
+}
+
+int write_file(char* buffer, FILE* fp) {
+	return fwrite(buffer, sizeof(buffer), 1 ,fp);
+}
