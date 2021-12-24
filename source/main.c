@@ -20,7 +20,7 @@ int main() {
 
 	FILE* file = open_file(ALUNOS_FILE_PATH);
 
-	int index = write_file(serialize(aluno), file);
+	int index = write_file(serializeAluno(aluno), file);
 
 	if (index < 0) {
 		perror("O Aluno nao foi guardado");

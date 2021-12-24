@@ -33,23 +33,23 @@ typedef struct Aluno{ //definir a estrutura do aluno e suas propriedadas
 
   //funcao que altera as propriedades dos alunos
 
-void* alterar_nome(Aluno* self, char* nome){
+void alterar_nome(Aluno* self, char* nome){
 	self->nome = nome;
 }
        
-void* alterar_nascimento(Aluno* self, Data nascimento) {
+void alterar_nascimento(Aluno* self, Data nascimento) {
 	self->dataNascimento = nascimento;
 }
 
-void* alterar_numero(Aluno* self, char* numero) {
+void alterar_numero(Aluno* self, char* numero) {
 	self->n_mecanografico = numero;
 }
 
-void* alterar_morada(Aluno* self, Morada morada) {
+void alterar_morada(Aluno* self, Morada morada) {
 	self->morada = morada;
 }
 
-void* alterar_curso(Aluno* self, Curso curso) {
+void alterar_curso(Aluno* self, Curso curso) {
 	self->curso = curso;
 }
 
@@ -78,7 +78,7 @@ Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Mora
 	return obj; 
 }
 
-char* serialize(Aluno* al) {
+char* serializeAluno(Aluno* al) {
 
 	size_t len = 0;
 
