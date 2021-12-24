@@ -162,4 +162,3 @@ char* getAlunoFromBuffer(char* buffer, int index) {
 
 	return aluno;
 }
-
