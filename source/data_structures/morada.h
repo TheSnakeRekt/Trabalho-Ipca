@@ -9,12 +9,14 @@ typedef struct Morada {
 	char* string;
 	char* rua;
 	char* codPostal;
+	char* localidade;
+
 	int TYPE;
 	int signed porta;
 } Morada;
 
 
-Morada* morada_create(char* rua, char* codPostal, int signed porta) {
+Morada* morada_create(char* rua, char* codPostal, char* localidade, int signed porta) {
 	Morada *obj = (Morada*) malloc(sizeof(Morada));
 
 	if (obj == NULL) {
@@ -34,7 +36,7 @@ char* serializeMorada(Morada* mo)
 	size_t len = 0;
 	len = snprintf(NULL, len, "%s,%d,%s", mo->rua, mo->porta, mo->codPostal);
 
-	mo->string = malloc(len);
+	mo->string = (char*) malloc(len);
 	signed int lenS = len + 1;
 
 	if (snprintf(mo->string, len + 1, "%s,%d,%s", mo->rua, mo->porta, mo->codPostal) > lenS)

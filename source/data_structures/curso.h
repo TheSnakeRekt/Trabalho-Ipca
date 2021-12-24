@@ -32,7 +32,7 @@ char* serializeCurso(Curso* cu)
     size_t len = 0;
     len = snprintf(NULL, len, "%s,%s", cu->nome, cu->numero);
 
-	cu->string = malloc(len);
+	cu->string = (char*) malloc(len);
 	signed int totalB = snprintf(cu->string, len + 1, "%s,%s", cu->nome, cu->numero);
 
     if (totalB > len + 1)

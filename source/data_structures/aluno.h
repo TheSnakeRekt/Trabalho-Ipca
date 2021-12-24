@@ -8,11 +8,11 @@
 #include "curso.h"
 
 struct Aluno;
-typedef void* (*alterarNome)(struct Aluno* self, char* nome);     // sao pointers
-typedef void* (*alterarNumeroMecanografico)(struct Aluno* self, char* n);
-typedef void* (*alterarDataNascimento)(struct Aluno* self, Data d);
-typedef void* (*alterarMorada)(struct Aluno* self, Morada m);
-typedef void* (*alterarCurso)(struct Aluno* self, Curso c);
+typedef void (*alterarNome)(struct Aluno* self, char* nome);     // sao pointers
+typedef void (*alterarNumeroMecanografico)(struct Aluno* self, char* n);
+typedef void (*alterarDataNascimento)(struct Aluno* self, Data d);
+typedef void (*alterarMorada)(struct Aluno* self, Morada m);
+typedef void (*alterarCurso)(struct Aluno* self, Curso c);
 
 typedef struct Aluno{ //definir a estrutura do aluno e suas propriedadas
 	char* string;
@@ -84,7 +84,7 @@ char* serializeAluno(Aluno* al) {
 
 	len = snprintf(NULL, len, "%s,%s,%s,%s,%s;\n", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
 
-	al->string = malloc(len);
+	al->string = (char*) malloc(len);
 	signed int totalB = snprintf(al->string, len + 1, "%s,%s,%s,%s,%s;\n", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
 
 	if (totalB > len+1)

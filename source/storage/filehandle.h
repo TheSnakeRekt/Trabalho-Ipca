@@ -6,7 +6,7 @@
 #include "storage.h"
 
 
-FILE* open_file(char* fileName) {
+FILE* open_file(const char* fileName) {
 	return fopen(fileName, "a+");
 }
 
@@ -42,7 +42,7 @@ char* read_file(FILE* fp) {
 	int lSize = ftell(fp);
 	rewind(fp);
 
-	buffer = (char*)malloc(sizeof(char) * lSize);
+	buffer = (char*) malloc(sizeof(char) * lSize) + 1;
 	fread(buffer, 1, lSize, fp);
 
 	return buffer;
