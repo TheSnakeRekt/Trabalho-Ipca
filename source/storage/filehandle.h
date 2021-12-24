@@ -44,6 +44,7 @@ char* read_file(FILE* fp) {
 
 	buffer = (char*) malloc(sizeof(char) * lSize) + 1;
 	fread(buffer, 1, lSize, fp);
+	fclose(fp);
 
 	return buffer;
 }

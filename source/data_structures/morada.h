@@ -27,6 +27,7 @@ Morada* morada_create(char* rua, char* codPostal, char* localidade, int signed p
 	obj->codPostal = codPostal;
 	obj->rua = rua;
 	obj->porta = porta;
+	obj->localidade = localidade;
 
 	return obj;
 }
@@ -34,12 +35,12 @@ Morada* morada_create(char* rua, char* codPostal, char* localidade, int signed p
 char* serializeMorada(Morada* mo)
 {
 	size_t len = 0;
-	len = snprintf(NULL, len, "%s,%d,%s", mo->rua, mo->porta, mo->codPostal);
+	len = snprintf(NULL, len, "%s,%d,%s,%s", mo->rua, mo->porta, mo->codPostal, mo->localidade);
 
 	mo->string = (char*) malloc(len);
-	signed int lenS = len + 1;
+	signed int totalB = snprintf(mo->string, len + 1, "%s,%d,%s,%s", mo->rua, mo->porta, mo->codPostal, mo->localidade);
 
-	if (snprintf(mo->string, len + 1, "%s,%d,%s", mo->rua, mo->porta, mo->codPostal) > lenS)
+	if (totalB > len + 1)
 	{
 		printf("A Morada nao foi serializada.");
 		return NULL;

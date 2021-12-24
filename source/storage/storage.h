@@ -3,7 +3,7 @@ const char* BASE_DIR = "C:\\projeto";
 const char* ALUNOS_INDEX_FILE_PATH = "C:\\projeto\\alunos.index.storage";
 const char* CURSO_INDEX_FILE_PATH = "C:\\projeto\\curso.index.storage";
 
-const char* ALUNOS_FILE_PATH = "C:\\projeto\\alunos.storage.txt";
+const char* ALUNOS_FILE_PATH = "C:\\projeto\\alunos.storage";
 const char* CURSOS_FILE_PATH = "C:\\projeto\\cursos.storage";
 const char* MORADA_FILE_PATH = "C:\\projeto\\morada.storage";
 

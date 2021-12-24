@@ -41,18 +41,20 @@ int main() {
 
 		Em seguida recuperamos um aluno com uma determinada posiçao neste caso o primeiro aluno,
 		pois estamos a passar 0 , libertamos a memoria do buffer, pois ja nao precisamos de toda a informaçao
-		e em seguida recuperamos o numero mecanografico do aluno, e finalmente imprimimos os dois.
+		e em seguida recuperamos todos os valores do aluno, e finalmente imprimimos.
 	*/
 
 	file = open_file(ALUNOS_FILE_PATH);
-	char * buffer = read_file(file);
+	char* buffer = read_file(file);
 
 	char* alunoFromFile = getAlunoFromBuffer(buffer, 0);
+	char* numeroMecanografico = getNumeroMecanografico(alunoFromFile);
+	char* dataNascimentoFromBuffer = getDataNascimento(alunoFromFile);
+	char* cursoFromBuffer = getCurso(alunoFromFile);
+	char* moradaFromBuffer = getMorada(alunoFromFile);
 	
 
-	char* numeroMecanografico = getNumeroMecanografico(alunoFromFile);
-
-	printf("%s\n%s", alunoFromFile, numeroMecanografico);
+	printf("%s\n%s\n%s\n%s\n%s", alunoFromFile, numeroMecanografico, dataNascimentoFromBuffer, moradaFromBuffer, cursoFromBuffer);
 	system("pause");
 
 	return 0;
