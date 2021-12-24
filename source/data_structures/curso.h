@@ -3,45 +3,43 @@
 #include <stdio.h>
 #include <malloc.h>
 
-struct Curso;
-typedef void* (*set)(struct Curso* self, char* nome, char* numero);
-
 typedef struct Curso {
+	char* string;
 	char* nome;
 	char* numero;
 
-	set set;
+	int TYPE;
+
 } Curso;
 
-
-void* setData(Curso* self, char* nome, char* numero) {
-	self->nome = nome;
-	self->numero = numero;
-}
-
-Curso* curso_create() {
+Curso* curso_create(char* nome, char* numero) {
 	Curso* obj = (Curso*) malloc(sizeof(Curso));
 
 	if (obj == NULL) {
 		return NULL;
 	}
-	obj->set = setData;
+
+	obj->TYPE = Curso_T;
+
+	obj->nome = nome;
+	obj->numero = numero;
 
 	return obj;
 }
 
-char* serializeCurso(Curso cu)
+char* serializeCurso(Curso* cu)
 {
     size_t len = 0;
-    len = snprintf(NULL, len, "%s,%s", cu.nome, cu.numero);
+    len = snprintf(NULL, len, "%s,%s", cu->nome, cu->numero);
 
-    char* apstr;
+	cu->string = malloc(len);
+	signed int totalB = snprintf(cu->string, len + 1, "%s,%s", cu->nome, cu->numero);
 
-    if (snprintf(apstr, len + 1, "%s,%s", cu.nome, cu.numero) > len + 1)
+    if (totalB > len + 1)
     {
         printf("O Curso nao foi serializado.");
         return NULL;
     }
 
-    return apstr;
+    return cu->string;
 }

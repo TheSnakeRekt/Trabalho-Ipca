@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <sys/stat.h>
+#include <string.h>
 #include "storage.h"
 
 
 FILE* open_file(char* fileName) {
-	return fopen(fileName, "a");
+	return fopen(fileName, "a+");
 }
 
 struct stat st = { 0 };
@@ -20,13 +21,13 @@ int filehandle_init() {
 		filehandle_init();
 	}
 	for (i = 0; i < STORAGE_LENGTH; i++) {
-		FILE* fp = fopen(STORAGE_NAME[i], "w+");
+		FILE* fp = fopen(STORAGE_NAME[i], "a+");
 
 		if (!fp) {
 			perror("fopen");
 			continue;
 		}
-		fputs("\n", fp);
+		fputs("", fp);
 		fclose(fp);
 	}
 
@@ -47,6 +48,23 @@ char* read_file(FILE* fp) {
 	return buffer;
 }
 
-int write_file(char* buffer, FILE* fp) {
-	return fwrite(buffer, sizeof(buffer), 1 ,fp);
+int count_lines(FILE* fp) {
+	char ch;
+	int i = 0;
+	while ((ch = fgetc(fp)) != EOF) {
+		if (ch == '\n')
+			i++;
+	}
+
+	return i;
 }
+
+int write_file(char* buffer, FILE* fp) {
+	if (fwrite(buffer, strlen(buffer), 1, fp) >= 1) {
+		rewind(fp);
+		return count_lines(fp) - 1;
+	}
+
+	return -1;
+}
+
