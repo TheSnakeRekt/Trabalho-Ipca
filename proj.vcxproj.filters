@@ -65,6 +65,15 @@
     <ClInclude Include="source\data_structures\types.h">
       <Filter>Header Files\data_structures</Filter>
     </ClInclude>
+    <ClInclude Include="source\storage\storage.h">
+      <Filter>Header Files\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="source\storage\datahandler.h">
+      <Filter>Header Files\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="source\storage\filehandle.h">
+      <Filter>Header Files\storage</Filter>
+    </ClInclude>
     <ClInclude Include="source\lib\aluno\aluno.lib.c">
       <Filter>Header Files\lib\aluno</Filter>
     </ClInclude>

@@ -6,6 +6,9 @@
 #include <sys/stat.h>
 #include <string.h>
 
+
+struct stat st = { 0 };
+
 const char* BASE_DIR = "C:\\projeto";
 
 const char* ALUNOS_INDEX_FILE_PATH = "C:\\projeto\\alunos.index.storage";
