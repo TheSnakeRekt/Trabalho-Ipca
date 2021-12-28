@@ -1,7 +1,5 @@
 #include "storage.h"
 
-struct stat st = { 0 };
-
 FILE* open_file(const char* fileName) {
 	return fopen(fileName, "a+");
 }

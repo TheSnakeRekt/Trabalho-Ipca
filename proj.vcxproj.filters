@@ -57,18 +57,15 @@
     <ClCompile Include="source\data_structures\curso\curso.c">
       <Filter>Header Files\data_structures\curso</Filter>
     </ClCompile>
+    <ClCompile Include="source\storage\storage.c">
+      <Filter>Header Files\storage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\data_structures\types.h">
       <Filter>Header Files\data_structures</Filter>
     </ClInclude>
     <ClInclude Include="source\storage\storage.h">
-      <Filter>Header Files\storage</Filter>
-    </ClInclude>
-    <ClInclude Include="source\storage\datahandler.h">
-      <Filter>Header Files\storage</Filter>
-    </ClInclude>
-    <ClInclude Include="source\storage\filehandle.h">
       <Filter>Header Files\storage</Filter>
     </ClInclude>
     <ClInclude Include="source\lib\aluno\aluno.lib.c">
@@ -91,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="aluno.lib.h">
       <Filter>Header Files\lib\aluno</Filter>
+    </ClInclude>
+    <ClInclude Include="source\storage\datahandler.h">
+      <Filter>Header Files\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="source\storage\storage.h">
+      <Filter>Header Files\storage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -103,6 +103,7 @@
     <ClCompile Include="source\data_structures\data\data.c" />
     <ClCompile Include="source\data_structures\morada\morada.c" />
     <ClCompile Include="source\main.c" />
+    <ClCompile Include="source\storage\storage.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aluno.lib.h" />
@@ -114,7 +115,6 @@
     <ClInclude Include="source\lib\aluno\aluno.lib.c" />
     <ClInclude Include="source\lib\mapping\aluno_mapping.h" />
     <ClInclude Include="source\storage\datahandler.h" />
-    <ClInclude Include="source\storage\filehandle.h" />
     <ClInclude Include="source\storage\storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
