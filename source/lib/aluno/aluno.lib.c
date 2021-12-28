@@ -5,7 +5,6 @@
 
 char* getNome(char* aluno) {
 	int i = 0;
-	int tLen = 0;
 	char* nome; 
 
 	for (i = 0; i <strlen(aluno); i++) {
@@ -14,7 +13,7 @@ char* getNome(char* aluno) {
 		}
 	}
 
-	nome = (char*)malloc(tLen + 1);
+	nome = (char*)malloc(i + 1);
 	
 	sprintf(nome, "%.*s\n", i, aluno);
 
