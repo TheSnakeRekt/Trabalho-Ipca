@@ -1,5 +1,9 @@
-#include <source/lib/mapping/aluno_index_mapping.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+#include <stdio.h>
 
+#include "../mapping/aluno_index_mapping.h"
 
 char* getNomeIndex(char* aluno) {
 	int i = 0;
@@ -30,7 +34,7 @@ char* getNomeIndex(char* aluno) {
 	return nome;
 }
 
-char* getIndiceIndex(char* aluno) {
+int getIndiceIndex(char* aluno) {
 	int i = 0;
 	char* indice;
 
@@ -44,5 +48,5 @@ char* getIndiceIndex(char* aluno) {
 
 	sprintf(indice, "%.*s\n", i, aluno);
 
-	return indice;
+	return atoi(indice);
 }

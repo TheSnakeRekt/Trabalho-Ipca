@@ -1,7 +1,4 @@
-#pragma once
 #include "aluno.lib.h"
-
-
 
 char* getNome(char* aluno) {
 	int i = 0;

@@ -22,9 +22,6 @@
     <Filter Include="Header Files\lib">
       <UniqueIdentifier>{8cc3f7d6-4423-4261-a99e-a092419b2431}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\lib\aluno">
-      <UniqueIdentifier>{ac0fecad-888e-4e28-9b57-29db90052775}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\lib\mapping">
       <UniqueIdentifier>{a49547b3-1ae6-4282-a88c-24f6a2f30fa0}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,15 @@
     </Filter>
     <Filter Include="Header Files\data_structures\curso">
       <UniqueIdentifier>{a6a18ddf-3e4c-4eb7-9ea3-5a3440db7050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\index">
+      <UniqueIdentifier>{404b5b72-59de-46a4-b947-d77c27ebb939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\aluno">
+      <UniqueIdentifier>{d2a2110c-8825-4790-ad29-9347dcc5c2e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\algorithms">
+      <UniqueIdentifier>{1e7beae4-7856-4b53-a503-a01687d1c1f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,21 @@
     <ClCompile Include="source\storage\storage.c">
       <Filter>Header Files\storage</Filter>
     </ClCompile>
+    <ClCompile Include="source\storage\datahandler.c">
+      <Filter>Header Files\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\index\index.lib.c">
+      <Filter>Header Files\lib\index</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\aluno\aluno.lib.c">
+      <Filter>Header Files\lib\aluno</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\aluno\aluno.repo.lib.c">
+      <Filter>Header Files\lib\aluno</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\algorithms\algorithms.lib.c">
+      <Filter>Header Files\lib\algorithms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\data_structures\types.h">
@@ -67,15 +88,6 @@
     </ClInclude>
     <ClInclude Include="source\storage\storage.h">
       <Filter>Header Files\storage</Filter>
-    </ClInclude>
-    <ClInclude Include="source\storage\datahandler.h">
-      <Filter>Header Files\storage</Filter>
-    </ClInclude>
-    <ClInclude Include="source\storage\filehandle.h">
-      <Filter>Header Files\storage</Filter>
-    </ClInclude>
-    <ClInclude Include="source\lib\aluno\aluno.lib.c">
-      <Filter>Header Files\lib\aluno</Filter>
     </ClInclude>
     <ClInclude Include="source\lib\mapping\aluno_mapping.h">
       <Filter>Header Files\lib\mapping</Filter>
@@ -92,14 +104,26 @@
     <ClInclude Include="source\data_structures\curso\curso.h">
       <Filter>Header Files\data_structures\curso</Filter>
     </ClInclude>
-    <ClInclude Include="aluno.lib.h">
-      <Filter>Header Files\lib\aluno</Filter>
+    <ClInclude Include="source\storage\storage.h">
+      <Filter>Header Files\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\index\index.lib.h">
+      <Filter>Header Files\lib\index</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\mapping\aluno_index_mapping.h">
+      <Filter>Header Files\lib\mapping</Filter>
     </ClInclude>
     <ClInclude Include="source\storage\datahandler.h">
       <Filter>Header Files\storage</Filter>
     </ClInclude>
-    <ClInclude Include="source\storage\storage.h">
-      <Filter>Header Files\storage</Filter>
+    <ClInclude Include="source\lib\aluno\aluno.lib.h">
+      <Filter>Header Files\lib\aluno</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\aluno\aluno.repo.lib.h">
+      <Filter>Header Files\lib\aluno</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\algorithms\algorithms.lib.h">
+      <Filter>Header Files\lib\algorithms</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

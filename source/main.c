@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "storage/storage.h"
-#include "data_structures/aluno/aluno.h"
+
 #include "lib/aluno/aluno.lib.h"
+#include "data_structures/data/data.h"
+#include "data_structures/morada/morada.h"
+#include "data_structures/curso/curso.h"
+#include "data_structures/aluno/aluno.h"
+#include "storage/storage.h"
+
 
 int main() {
 	filehandle_init();
@@ -57,7 +62,7 @@ int main() {
 	char* moradaFromBuffer = getMorada(alunoFromFile);
 	
 
-	printf("%s\n%s\n%s\n%s\n%s\n%s", nomeFromBuffer, alunoFromFile, numeroMecanografico, dataNascimentoFromBuffer, moradaFromBuffer, cursoFromBuffer);
+	printf("%s\n%s\n%s\n%s\n%s\n%s", alunoFromFile, nomeFromBuffer, numeroMecanografico, dataNascimentoFromBuffer, moradaFromBuffer, cursoFromBuffer);
 	system("pause");
 
 	return 0;

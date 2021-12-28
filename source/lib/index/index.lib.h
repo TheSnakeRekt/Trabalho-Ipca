@@ -1,6 +1,7 @@
 #pragma once
 
+
 char* getNomeIndex(char* aluno);
-char* getIndiceIndex(char* aluno);
+int getIndiceIndex(char* aluno);
 
 

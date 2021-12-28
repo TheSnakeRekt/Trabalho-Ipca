@@ -8,7 +8,7 @@
 #include "../curso/curso.h"
 
 
-extern struct Aluno;
+struct Aluno;
 
 typedef void (*alterarNome)(struct Aluno* self, char* nome);
 typedef void (*alterarNumeroMecanografico)(struct Aluno* self, char* n);
