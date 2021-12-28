@@ -45,16 +45,22 @@ int main() {
 	*/
 
 	file = open_file(ALUNOS_FILE_PATH);
+
 	char* buffer = read_file(file);
 
+	
+
 	char* alunoFromFile = getAlunoFromBuffer(buffer, 0);
+	
+	char* nomeFromBuffer = getNome(alunoFromFile);
+	
 	char* numeroMecanografico = getNumeroMecanografico(alunoFromFile);
 	char* dataNascimentoFromBuffer = getDataNascimento(alunoFromFile);
 	char* cursoFromBuffer = getCurso(alunoFromFile);
 	char* moradaFromBuffer = getMorada(alunoFromFile);
 	
 
-	printf("%s\n%s\n%s\n%s\n%s", alunoFromFile, numeroMecanografico, dataNascimentoFromBuffer, moradaFromBuffer, cursoFromBuffer);
+	printf("%s\n%s\n%s\n%s\n%s\n%s", nomeFromBuffer, alunoFromFile, numeroMecanografico, dataNascimentoFromBuffer, moradaFromBuffer, cursoFromBuffer);
 	system("pause");
 
 	return 0;

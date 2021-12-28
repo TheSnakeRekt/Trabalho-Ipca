@@ -3,6 +3,26 @@
 #include <malloc.h>
 #include "../mapping/aluno_mapping.h"
 
+
+
+char* getNome(char* aluno) {
+	int i = 0;
+	int tLen = 0;
+	char* nome; 
+
+	for (i = 0; i <strlen(aluno); i++) {
+		if (aluno[i] == ','){
+			break;
+		}
+	}
+
+	nome = (char*)malloc(tLen + 1);
+	
+	sprintf(nome, "%.*s\n", i, aluno);
+
+	return nome;
+}
+
 char* getNumeroMecanografico(char* aluno){
 	int pos = 0;
 	int i = 0;
