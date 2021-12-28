@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "storage/filehandle.h"
-#include "data_structures/aluno.h"
+#include "storage/storage.h"
+#include "data_structures/aluno/aluno.h"
 #include "lib/aluno/aluno.lib.h"
 
 int main() {
@@ -48,12 +48,9 @@ int main() {
 
 	char* buffer = read_file(file);
 
-	
-
 	char* alunoFromFile = getAlunoFromBuffer(buffer, 0);
 	
 	char* nomeFromBuffer = getNome(alunoFromFile);
-	
 	char* numeroMecanografico = getNumeroMecanografico(alunoFromFile);
 	char* dataNascimentoFromBuffer = getDataNascimento(alunoFromFile);
 	char* cursoFromBuffer = getCurso(alunoFromFile);

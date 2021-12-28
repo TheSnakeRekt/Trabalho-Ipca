@@ -1,3 +1,4 @@
+#pragma once
 enum aluno_mapping {
 	Nome_A = 0,
 	Data_Nascimento_A = 1,

@@ -1,16 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
-#include <sys/stat.h>
-#include <string.h>
 #include "storage.h"
 
+struct stat st = { 0 };
 
 FILE* open_file(const char* fileName) {
 	return fopen(fileName, "a+");
 }
-
-struct stat st = { 0 };
 
 int filehandle_init() {
 

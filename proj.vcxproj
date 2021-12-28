@@ -98,17 +98,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\data_structures\aluno\aluno.c" />
+    <ClCompile Include="source\data_structures\curso\curso.c" />
+    <ClCompile Include="source\data_structures\data\data.c" />
+    <ClCompile Include="source\data_structures\morada\morada.c" />
     <ClCompile Include="source\main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\data_structures\aluno.h" />
-    <ClInclude Include="source\data_structures\curso.h" />
-    <ClInclude Include="source\data_structures\data.h" />
-    <ClInclude Include="source\data_structures\morada.h" />
+    <ClInclude Include="aluno.lib.h" />
+    <ClInclude Include="source\data_structures\aluno\aluno.h" />
+    <ClInclude Include="source\data_structures\curso\curso.h" />
+    <ClInclude Include="source\data_structures\data\data.h" />
+    <ClInclude Include="source\data_structures\morada\morada.h" />
     <ClInclude Include="source\data_structures\types.h" />
-    <ClInclude Include="source\lib\aluno\aluno.lib.h" />
+    <ClInclude Include="source\lib\aluno\aluno.lib.c" />
     <ClInclude Include="source\lib\mapping\aluno_mapping.h" />
-    <ClInclude Include="source\lib\parser\parser.h" />
     <ClInclude Include="source\storage\datahandler.h" />
     <ClInclude Include="source\storage\filehandle.h" />
     <ClInclude Include="source\storage\storage.h" />

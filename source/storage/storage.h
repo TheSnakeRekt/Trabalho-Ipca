@@ -1,3 +1,11 @@
+#pragma once
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <sys/stat.h>
+#include <string.h>
+
 const char* BASE_DIR = "C:\\projeto";
 
 const char* ALUNOS_INDEX_FILE_PATH = "C:\\projeto\\alunos.index.storage";
@@ -21,3 +29,10 @@ const char* STORAGE_NAME[7] = {
     "C:\\projeto\\alunos_curso.storage", 
     "C:\\projeto\\alunos_morada.storage"
 };
+
+
+FILE* open_file(const char* fileName);
+int filehandle_init();
+char* read_file(FILE* fp);
+int count_lines(FILE* fp);
+int write_file(char* buffer, FILE* fp);
