@@ -46,6 +46,9 @@
     <Filter Include="Header Files\lib\algorithms">
       <UniqueIdentifier>{1e7beae4-7856-4b53-a503-a01687d1c1f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\common">
+      <UniqueIdentifier>{8ae9a49e-cd22-467b-a200-301323d43161}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.c">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="source\lib\algorithms\algorithms.lib.c">
       <Filter>Header Files\lib\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="source\common\aluno.common.c">
+      <Filter>Header Files\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,15 @@
     </ClInclude>
     <ClInclude Include="source\lib\algorithms\algorithms.lib.h">
       <Filter>Header Files\lib\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="source\common\aluno.common.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\common\domain.interop.mapper.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\common\interop_mapper.h">
+      <Filter>Header Files\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

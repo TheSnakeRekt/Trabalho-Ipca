@@ -1,11 +1,7 @@
-#include "../data_structures/types.h"
-#include "../lib/mapping/aluno_mapping.h"
-#include "storage.h"
-#include "../lib/index/index.lib.h"
-#include "../lib/aluno/aluno.lib.h"
+#include "datahandler.h"
 
 
-char* find(int type, int prop, char* value) {
+char* findBy(int type, int prop, char* value) {
 	switch (type) {
 		case Aluno_T:
 			return select_aluno(prop, value);
