@@ -11,8 +11,6 @@ char* aluno_op(int op_type, char* data) {
 	switch (op_type) {
 		case Select:
 			return find(data);
-		case Mod:
-			return mod(data);
 		case Delete:
 			return del(data);
 		case Create:
@@ -30,9 +28,5 @@ char* find(char* data) {
 }
 
 char* create(char* value) {
-	return save_aluno(type, prop, value);
-}
-
-char* mod(int id, int prop, char* value) {
-	return mod(id, prop, value);
+	return save_aluno(value);
 }

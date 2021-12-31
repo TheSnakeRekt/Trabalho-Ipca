@@ -177,3 +177,35 @@ char* getAlunoFromBuffer(char* buffer, int index) {
 
 	return aluno;
 }
+
+Aluno* fromJson(char* json) {
+	char* nome, numero;
+	signed int mes, dia, ano;
+
+	char* rua, codPostal, localidade;
+	int nPorta;
+
+	char* nomeCurso, nCurso;
+
+	nome = get_value(json, "nome");
+	numero = get_value(json, "numero");
+
+	mes = atoi(get_value(json, "mes"));
+	dia = atoi(get_value(json, "dia"));
+	ano = atoi(get_value(json, "ano"));
+
+	rua = get_value(json, "rua");
+	codPostal = get_value(json, "codPostal");
+	localidade = get_value(json, "localidade");
+	nPorta = atoi(get_value(json, "n_porta"));
+
+	nomeCurso = get_value(json, "curso");
+	nCurso = get_value(json, "n_curso");
+
+	Data* dataNascimento = data_create(dia, mes, ano);
+	Morada* morada = morada_create(rua, codPostal, localidade, nPorta);
+	Curso* curso = curso_create(nomeCurso, nCurso);
+
+
+	return create_aluno(nome, numero, *dataNascimento, *morada, *curso);
+}

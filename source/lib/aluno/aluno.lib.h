@@ -14,3 +14,4 @@ char* getDataNascimento(char* aluno);
 char* getMorada(char* aluno);
 char* getCurso(char* aluno);
 char* getAlunoFromBuffer(char* buffer, int index);
+Aluno* fromJson(char* json);

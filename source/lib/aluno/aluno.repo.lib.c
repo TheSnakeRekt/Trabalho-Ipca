@@ -18,7 +18,15 @@ char* select_aluno(int prop, char* value) {
 }
 
 
-char* save_aluno(Aluno* aluno) {
+char* save_aluno(char* json) {
+
+	Aluno* aluno = fromJson(json);
+
+	if (aluno == NULL) {
+		perror("Json was not parsed");
+		return "false";
+	}
+
 	FILE* fp = open_file(ALUNOS_FILE_PATH);
 	int i = write_file(aluno->string, fp);
 	fclose(fp);
