@@ -1,32 +1,38 @@
 #include "aluno.common.h"
 #include "interop_mapper.h"
+#include "../lib/json/data_parser.h"
 
 char* find(char* value);
+char* mod(char* data);
+char* del(char* data);
+char* create(char* data);
 
 char* aluno_op(int op_type, char* data) {
 	switch (op_type) {
 		case Select:
 			return find(data);
+		case Mod:
+			return mod(data);
+		case Delete:
+			return del(data);
+		case Create:
+			return create(data);
 		default:
 			return "null";
 	}
 }
 
-char* find(char* value) {
-	size_t len = 0;
-	len = snprintf(NULL, len, "Hello %s", value);
-
-	char* buffer = (char*)malloc(len);
-
-	sprintf(buffer, "Hello %s", value);
-	return buffer;
-	//return findBy(Aluno_T, prop, value);
+char* find(char* data) {
+	char* prop = atoi(get_value(data, "prop"));
+	char* value = get_value(data, "value");
+	
+	return select_aluno(prop, value);
 }
 
-/*int create(char* value) {
-	return find(type, prop, value);
+char* create(char* value) {
+	return save_aluno(type, prop, value);
 }
 
-int mod(int id, int prop, char* value) {
+char* mod(int id, int prop, char* value) {
 	return mod(id, prop, value);
-}*/
+}

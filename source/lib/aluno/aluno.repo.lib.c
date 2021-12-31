@@ -8,9 +8,35 @@ char* select_aluno(int prop, char* value) {
 			alunoBuffer = byName(value);
 			break;
 		case N_Mecanografico_A:
-			//alunoBuffer = byNumero(value);
+			alunoBuffer = byNumero(value);
 			break;
+		default:
+			alunoBuffer = allAlunos();
 	}
 
 	return alunoBuffer;
+}
+
+
+char* save_aluno(Aluno* aluno) {
+	FILE* fp = open_file(ALUNOS_FILE_PATH);
+	int i = write_file(aluno->string, fp);
+	fclose(fp);
+
+	fp = open_file(ALUNOS_INDEX_FILE_PATH);
+	fprintf(fp, "%d,%s,%s;\n", i, aluno->n_mecanografico, aluno->nome);
+	fclose(fp);
+
+	fp = open_file(ALUNOS_CURSO_FILE_PATH);
+	fprintf(fp, "%d,%s,%s;\n", i, aluno->curso.nome, aluno->nome);
+	fclose(fp);
+
+	if (i < 0) {
+		perror("false");
+		return "false";
+	}
+
+	free(aluno);
+	fclose(fp);
+	return "true";
 }

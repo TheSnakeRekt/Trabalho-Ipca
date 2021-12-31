@@ -21,7 +21,6 @@ void alterar_curso(Aluno* self, Curso curso) {
 	self->curso = curso;
 }
 
-
 Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Morada morada, Curso curso) {
 
 	Aluno* obj = (Aluno*)malloc(sizeof(Aluno));

@@ -49,6 +49,15 @@
     <Filter Include="Header Files\common">
       <UniqueIdentifier>{8ae9a49e-cd22-467b-a200-301323d43161}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lib\json">
+      <UniqueIdentifier>{551eee7b-0d7c-4193-8133-a9b074e6be8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\morada">
+      <UniqueIdentifier>{cdddffd1-4e2d-4623-bd07-b349442cf5c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\curso">
+      <UniqueIdentifier>{09e86d4e-fe0a-44d2-ad74-ded9befc6dea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.c">
@@ -86,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="source\common\aluno.common.c">
       <Filter>Header Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\json\data_parser.c">
+      <Filter>Header Files\lib\json</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="source\common\interop_mapper.h">
       <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\json\jsmn.h">
+      <Filter>Header Files\lib\json</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\json\data_parser.h">
+      <Filter>Header Files\lib\json</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

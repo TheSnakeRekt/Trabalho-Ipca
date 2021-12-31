@@ -1,4 +1,5 @@
 #include "aluno.lib.h"
+#include "../json/data_parser.h"
 
 char* getNome(char* aluno) {
 	int i = 0;

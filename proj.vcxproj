@@ -22,6 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{BF50AE82-3F12-45C9-B9EC-666C7615F8A4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,6 +98,11 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\common\aluno.common.c" />
     <ClCompile Include="source\data_structures\aluno\aluno.c" />
@@ -107,6 +113,7 @@
     <ClCompile Include="source\lib\aluno\aluno.lib.c" />
     <ClCompile Include="source\lib\aluno\aluno.repo.lib.c" />
     <ClCompile Include="source\lib\index\index.lib.c" />
+    <ClCompile Include="source\lib\json\data_parser.c" />
     <ClCompile Include="source\main.c" />
     <ClCompile Include="source\storage\datahandler.c" />
     <ClCompile Include="source\storage\storage.c" />
@@ -124,6 +131,8 @@
     <ClInclude Include="source\lib\aluno\aluno.lib.h" />
     <ClInclude Include="source\lib\aluno\aluno.repo.lib.h" />
     <ClInclude Include="source\lib\index\index.lib.h" />
+    <ClInclude Include="source\lib\json\data_parser.h" />
+    <ClInclude Include="source\lib\json\jsmn.h" />
     <ClInclude Include="source\lib\mapping\aluno_index_mapping.h" />
     <ClInclude Include="source\lib\mapping\aluno_mapping.h" />
     <ClInclude Include="source\storage\datahandler.h" />

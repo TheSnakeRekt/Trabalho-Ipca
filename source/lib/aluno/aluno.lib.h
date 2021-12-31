@@ -3,6 +3,7 @@
 #include <malloc.h>
 #include <stdio.h>
 
+#include "../../data_structures/aluno/aluno.h"
 #include "../../storage/storage.h"
 #include "../mapping/aluno_mapping.h"
 

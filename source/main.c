@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include "lib/json/data_parser.h"
 #include "common/aluno.common.h"
 
 char* execute(int domain, int op_type, char* data);
@@ -27,6 +28,8 @@ void main(int argc, char* argv[]) {
 	
 	int domain = atoi(argv[1]);
 	int op_type = atoi(argv[2]);
+
+
 	printf("%s",execute(domain, op_type, argv[3]));
 }
 
