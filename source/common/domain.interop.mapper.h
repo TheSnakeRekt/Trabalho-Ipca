@@ -1,6 +1,6 @@
 #pragma once
 
 enum domain_mapper {
-	Aluno = 1,
-	Curso = 2,
+	Aluno_D = 1,
+	Curso_D = 2,
 };

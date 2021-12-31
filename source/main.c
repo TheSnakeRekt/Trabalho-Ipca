@@ -36,7 +36,7 @@ void main(int argc, char* argv[]) {
 
 char* execute(int domain, int op_type, char* data) {
 	switch (domain) {
-		case Aluno:
+		case Aluno_D:
 			return aluno_op(op_type, data);
 		default:
 			perror("Error: This domain does not exist");
