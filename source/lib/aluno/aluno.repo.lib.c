@@ -5,46 +5,51 @@ char* select_aluno(int prop, char* value) {
 
 	switch (prop) {
 		case Nome_A:
-			alunoBuffer = byName(value);
+			alunoBuffer = byName(value); //recebe um nome ou parte de um nome, retorna os alunos que contenham esse nome
 			break;
 		case N_Mecanografico_A:
-			alunoBuffer = byNumero(value);
+			alunoBuffer = byNumero(value); //recebe um numero mecanografico, retorna o aluno com esse numero
+			break;
+		case Curso_Sigla_A:
+			alunoBuffer = byCurso(value); //recebe uma Sigla de curso, retorna todos alunos desse curso
 			break;
 		default:
-			alunoBuffer = allAlunos();
+			alunoBuffer = allAlunos(); //retorna todos os Alunos dentro do ficheiro;
 	}
 
 	return alunoBuffer;
 }
 
-
+/*
+	Recebe um aluno em formato JSON, e guarda o mesmo no ficheiro de alunos, assim como os seus indices
+*/
 char* save_aluno(char* json) {
 
 	Aluno* aluno = fromJson(json);
 
 	if (aluno == NULL) {
-		perror("Json was not parsed");
 		return "false";
 	}
 
-	FILE* fp = open_file(ALUNOS_FILE_PATH);
-	int i = write_file(aluno->string, fp);
-	fclose(fp);
-
-	fp = open_file(ALUNOS_INDEX_FILE_PATH);
-	fprintf(fp, "%d,%s,%s;\n", i, aluno->n_mecanografico, aluno->nome);
-	fclose(fp);
-
-	fp = open_file(ALUNOS_CURSO_FILE_PATH);
-	fprintf(fp, "%d,%s,%s;\n", i, aluno->curso.nome, aluno->nome);
-	fclose(fp);
-
-	if (i < 0) {
-		perror("false");
+	long savedResult = saveAluno(aluno);
+	if (savedResult == 0) {
 		return "false";
 	}
 
-	free(aluno);
-	fclose(fp);
+	return "true";
+}
+
+char* mod_aluno(char* json) {
+
+	Aluno* aluno = fromJson(json);
+
+	if (aluno == NULL) {
+		return "false";
+	}
+
+	long savedResult = saveAluno(aluno);
+	if (savedResult == 0) {
+		return "false";
+	}
 	return "true";
 }

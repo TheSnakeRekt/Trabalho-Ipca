@@ -5,3 +5,4 @@
 
 char* byName(char* value);
 char* byNumero(char* value);
+char* allAlunos();

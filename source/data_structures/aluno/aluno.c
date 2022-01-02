@@ -63,3 +63,25 @@ char* serializeAluno(Aluno* al) {
 
 	return al->string;
 }
+
+long saveAluno(Aluno* aluno) {
+	FILE* fp = open_file(ALUNOS_FILE_PATH);
+	long index = write_file(aluno->string, fp);
+	fclose(fp);
+
+	fp = open_file(ALUNOS_INDEX_FILE_PATH);
+	fprintf(fp, "%l|%l,%s,%s;\n", index, strlen(aluno->string), aluno->n_mecanografico, aluno->nome);
+	fclose(fp);
+
+	fp = open_file(ALUNOS_CURSO_FILE_PATH);
+	fprintf(fp, "%l|%l,%s,%s;\n", index, strlen(aluno->string), aluno->curso.nome, aluno->nome);
+	fclose(fp);
+
+	if (index < 0) {
+		perror("Error while saving Aluno %s\n", aluno->n_mecanografico);
+		return 0;
+	}
+
+	fclose(fp);
+	return index;
+}

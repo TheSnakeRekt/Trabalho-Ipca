@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-#include <malloc.h>
-#include <stdio.h>
-
-#include "../mapping/aluno_index_mapping.h"
+#include "index.lib.h"
 
 char* getNomeIndex(char* aluno) {
 	int i = 0;
@@ -63,9 +58,10 @@ char* getNumeroIndex(char* aluno) {
 	return nome;
 }
 
-int getIndiceIndex(char* aluno) {
+long* getIndiceAndSizeIndex(char* aluno) {
 	int i = 0;
 	char* indice;
+	long indexSize[2]={0};
 
 	for (i = 0; i < strlen(aluno); i++) {
 		if (aluno[i] == ',') {
@@ -73,9 +69,21 @@ int getIndiceIndex(char* aluno) {
 		}
 	}
 
-	indice = (char*)malloc(i + 1);
+	indice = (char*) malloc(i + 1);
 
 	sprintf(indice, "%.*s\n", i, aluno);
 
-	return atoi(indice);
+	for (int j = i; j > 0; j--) {
+		if (indice[j] == "|") {
+			char* temp = "\n";
+
+			sprintf(temp, "%.*s", j - 1, indice);
+			indexSize[0] = atoi(temp);
+
+			sprintf(temp, "%.*s", i, &indice[j]);
+			indexSize[1] = atoi(temp);
+		}
+	}
+
+	return indexSize;
 }

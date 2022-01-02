@@ -1,24 +1,18 @@
-#include "aluno.common.h"
-#include "interop_mapper.h"
-#include "../lib/json/data_parser.h"
+#include "common.h"
 
-char* find(char* value);
-char* mod(char* data);
-char* del(char* data);
-char* create(char* data);
 
-char* aluno_op(int op_type, char* data) {
-	switch (op_type) {
-		case Select:
-			return find(data);
-		case Delete:
-			return del(data);
-		case Create:
-			return create(data);
-		default:
-			return "null";
-	}
+char* mod(char* data) {
+	char* nMeca = get_value(data, "n_meca");
+	char* alunoBuffer = select_aluno(N_Mecanografico_A, nMeca);
+
+	return mod_aluno(alunoBuffer);
 }
+
+char* del(char* data) {
+	return "null";
+};
+
+
 
 char* find(char* data) {
 	char* prop = atoi(get_value(data, "prop"));
@@ -29,4 +23,20 @@ char* find(char* data) {
 
 char* create(char* value) {
 	return save_aluno(value);
+}
+
+
+char* aluno_op(int op_type, char* data) {
+	switch (op_type) {
+	case Select:
+		return find(data);
+	case Mod:
+		return mod(data);
+	case Delete:
+		return del(data);
+	case Create:
+		return create(data);
+	default:
+		return "null";
+	}
 }

@@ -6,6 +6,7 @@
 #include "../morada/morada.h"
 #include "../data/data.h"
 #include "../curso/curso.h"
+#include "../../storage/storage.h"
 
 
 struct Aluno;
@@ -15,6 +16,7 @@ typedef void (*alterarNumeroMecanografico)(struct Aluno* self, char* n);
 typedef void (*alterarDataNascimento)(struct Aluno* self, Data d);
 typedef void (*alterarMorada)(struct Aluno* self, Morada m);
 typedef void (*alterarCurso)(struct Aluno* self, Curso c);
+
 
  typedef struct Aluno{ 
 	char* string;
@@ -35,3 +37,4 @@ typedef void (*alterarCurso)(struct Aluno* self, Curso c);
 
  Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Morada morada, Curso curso);
  char* serializeAluno(Aluno* al);
+ long saveAluno(Aluno* self);

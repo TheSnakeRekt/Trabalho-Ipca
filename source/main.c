@@ -1,14 +1,9 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "lib/json/data_parser.h"
-#include "common/aluno.common.h"
+#include "common/common.h"
 
 char* execute(int domain, int op_type, char* data);
 
-/*
-	apaguei o antigo codigo pois ele era so um exemplo, tive de adiantar a comunicaçao com a interface, porque ainda nao tinha feito isso
-	o main ja esta a usar o que for passado na linha de comandos.
-*/
 
 void main(int argc, char* argv[]) {
 	
@@ -33,11 +28,19 @@ void main(int argc, char* argv[]) {
 	printf("%s",execute(domain, op_type, argv[3]));
 }
 
+/*
+	Executa as Op (operaçoes) consoante o dominio que receber.
 
+	Dominios:
+		- Aluno
+		- Curso
+*/
 char* execute(int domain, int op_type, char* data) {
 	switch (domain) {
 		case Aluno_D:
 			return aluno_op(op_type, data);
+		case Curso_D:
+			return curso_op(op_type, data);
 		default:
 			perror("Error: This domain does not exist");
 	}

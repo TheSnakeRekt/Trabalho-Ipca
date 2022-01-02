@@ -7,7 +7,7 @@ char* byName(char* value) {
 	char* file = read_file(alunos);
 
 	int counter = 0;
-	int index = -1;
+	long index = -1;
 
 	for (int i = 0; i < strlen(file); i++) {
 		char* alunoBuffer = "\0";
@@ -22,7 +22,7 @@ char* byName(char* value) {
 
 		if (strcmp(alunoBuffer, value)) {
 
-			index = getIndiceIndex(alunoBuffer);
+			index = getIndiceAndSizeIndex(alunoBuffer);
 
 			break;
 		}
@@ -42,7 +42,7 @@ char* byNumero(char* value) {
 	char* file = read_file(alunos);
 
 	int counter = 0;
-	int index = -1;
+	long index = -1;
 
 	for (int i = 0; i < strlen(file); i++) {
 		char* alunoBuffer = "\0";
@@ -58,7 +58,43 @@ char* byNumero(char* value) {
 
 		if (strcmp(alunoBuffer, value)) {
 
-			index = getIndiceIndex(alunoBuffer);
+			index = getIndiceAndSizeIndex(alunoBuffer);
+
+			break;
+		}
+	}
+
+	alunos = open_file(ALUNOS_FILE_PATH);
+
+	file = read_file(alunos);
+
+	return getAlunoFromBuffer(file, index);
+}
+
+char* byCurso(char* value) {
+	char* alunoEncontrado;
+
+	FILE* alunos = open_file(ALUNOS_CURSO_FILE_PATH);
+	char* file = read_file(alunos);
+
+	int counter = 0;
+	long index = -1;
+
+	for (int i = 0; i < strlen(file); i++) {
+		char* alunoBuffer = "\0";
+
+		if (file[i] == ';') {
+			alunoEncontrado = getNumeroIndex(alunoBuffer);
+		}
+		else {
+			strcat_s(alunoBuffer, strlen(alunoBuffer), file[i]);
+		}
+
+		strcat_s(alunoBuffer, strlen(alunoBuffer), "\0");
+
+		if (strcmp(alunoBuffer, value)) {
+
+			index = getIndiceAndSizeIndex(alunoBuffer);
 
 			break;
 		}

@@ -1,5 +1,6 @@
 #include "curso.h"
 
+
 Curso* curso_create(char* nome, char* numero) {
 	Curso* obj = (Curso*)malloc(sizeof(Curso));
 
@@ -31,4 +32,17 @@ char* serializeCurso(Curso* cu)
 	}
 
 	return cu->string;
+}
+
+long saveCurso(Curso* curso) {
+	FILE* fp = open_file(CURSOS_FILE_PATH);
+	int i = write_file(curso->string, fp);
+	fclose(fp);
+
+	if (i < 0) {
+		perror("Error while saving Curso %s", curso->string);
+		return 0;
+	}
+
+	return i;
 }

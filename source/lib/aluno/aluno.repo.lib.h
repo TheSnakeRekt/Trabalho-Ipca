@@ -6,3 +6,4 @@
 
 char* select_aluno(int prop, char* value);
 char* save_aluno(char* json);
+char* mod_aluno(char* aluno);

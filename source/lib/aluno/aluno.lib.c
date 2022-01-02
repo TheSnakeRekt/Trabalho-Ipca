@@ -1,5 +1,5 @@
 #include "aluno.lib.h"
-#include "../json/data_parser.h"
+
 
 char* getNome(char* aluno) {
 	int i = 0;
@@ -150,30 +150,15 @@ char* getCurso(char* aluno) {
 	return curso;
 }
 
-char* getAlunoFromBuffer(char* buffer, int index) {
-	int i = 0;
-	int tLen = 0;
-	int counter = 0;
+char* getAlunoFromBuffer(char* buffer, long index[]) {
+	long i = index[0];
+	long size = index[1];
 
 	char* aluno;
 
-	for (i = 0; i < strlen(buffer); i++) {
-		if (buffer[i] == ';') {
-			counter++;
-		}
-		if (counter == index) {
-			int j = i;
-			while (buffer[j] != ';')
-			{
-				j++;
-			}
-			tLen = j-i;
-			break;
-		}
-	}
 
-	aluno = (char*) malloc(tLen + 1);
-	sprintf(aluno, "%.*s\n", tLen, &buffer[i]);
+	aluno = (char*) malloc(size + 1);
+	sprintf(aluno, "%.*s\n", size, &buffer[i]);
 
 	return aluno;
 }
@@ -202,10 +187,22 @@ Aluno* fromJson(char* json) {
 	nomeCurso = get_value(json, "curso");
 	nCurso = get_value(json, "n_curso");
 
-	Data* dataNascimento = data_create(dia, mes, ano);
-	Morada* morada = morada_create(rua, codPostal, localidade, nPorta);
 	Curso* curso = curso_create(nomeCurso, nCurso);
 
+	if (curso != NULL) {							
+		long savedCurso = saveCurso(curso);
+
+		if (savedCurso == 0) {
+			return "false";
+		}
+	}
+
+	Data* dataNascimento = data_create(dia, mes, ano);
+	Morada* morada = morada_create(rua, codPostal, localidade, nPorta);
+	
+	if (dataNascimento == NULL || morada == NULL) {
+		return "false";
+	}
 
 	return create_aluno(nome, numero, *dataNascimento, *morada, *curso);
 }

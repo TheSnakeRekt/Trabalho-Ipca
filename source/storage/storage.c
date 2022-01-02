@@ -9,21 +9,17 @@ const char* CURSO_INDEX_FILE_PATH = "C:\\projeto\\curso.index.storage";
 
 const char* ALUNOS_FILE_PATH = "C:\\projeto\\alunos.storage";
 const char* CURSOS_FILE_PATH = "C:\\projeto\\cursos.storage";
-const char* MORADA_FILE_PATH = "C:\\projeto\\morada.storage";
 
 const char* ALUNOS_CURSO_FILE_PATH = "C:\\projeto\\alunos_curso.storage";
-const char* ALUNOS_MORADA_FILE_PATH = "C:\\projeto\\alunos_morada.storage";
 
-const int STORAGE_LENGTH = 7;
+const int STORAGE_LENGTH = 5;
 
-const char* STORAGE_NAME[7] = {
+const char* STORAGE_NAME[5] = {
 	"C:\\projeto\\alunos.index.storage",
 	"C:\\projeto\\curso.index.storage",
 	"C:\\projeto\\alunos.storage",
 	"C:\\projeto\\cursos.storage",
-	"C:\\projeto\\morada.storage",
 	"C:\\projeto\\alunos_curso.storage",
-	"C:\\projeto\\alunos_morada.storage"
 };
 
 FILE* open_file(const char* fileName) {
@@ -67,21 +63,26 @@ char* read_file(FILE* fp) {
 	return buffer;
 }
 
-int count_lines(FILE* fp) {
+long count_lines(FILE* fp, long long rewindSize) {
+	return _llseek(fp, -rewindSize, SEEK_END);
+	/*
 	char ch;
-	int i = 0;
+	int counter = 2;
+
 	while ((ch = fgetc(fp)) != EOF) {
 		if (ch == '\n')
 			i++;
 	}
 
-	return i;
+	return i;*/
 }
 
-int write_file(char* buffer, FILE* fp) {
-	if (fwrite(buffer, strlen(buffer), 1, fp) >= 1) {
+long write_file(char* buffer, FILE* fp) {
+	long long bufferLen = strlen(buffer);
+
+	if (fwrite(buffer, bufferLen, 1, fp) >= 1) {
 		rewind(fp);
-		return count_lines(fp) - 1;
+		return count_lines(fp, bufferLen);
 	}
 
 	return -1;

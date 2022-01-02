@@ -16,18 +16,16 @@ const char* CURSO_INDEX_FILE_PATH;
 
 const char* ALUNOS_FILE_PATH;
 const char* CURSOS_FILE_PATH;
-const char* MORADA_FILE_PATH;
 
 const char* ALUNOS_CURSO_FILE_PATH;
-const char* ALUNOS_MORADA_FILE_PATH;
 
 const int STORAGE_LENGTH;
 
-const char* STORAGE_NAME[7];
+const char* STORAGE_NAME[5];
 
 
 FILE* open_file(const char* fileName);
 int filehandle_init();
 char* read_file(FILE* fp);
-int count_lines(FILE* fp);
-int write_file(char* buffer, FILE* fp);
+long count_lines(FILE* fp, long long bufferSize);
+long write_file(char* buffer, FILE* fp);

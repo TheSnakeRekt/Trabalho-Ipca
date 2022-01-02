@@ -1,5 +1,6 @@
 #include "data.h"
 
+
 Data* data_create(signed int dia, signed int mes, signed int ano) {
 	Data* obj = (Data*)malloc(sizeof(Data));
 
