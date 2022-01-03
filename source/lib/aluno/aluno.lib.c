@@ -158,41 +158,36 @@ char* getAlunoFromBuffer(char* buffer, long index[]) {
 
 
 	aluno = (char*) malloc(size + 1);
-	sprintf(aluno, "%.*s\n", size, &buffer[i]);
+	sprintf(aluno, "%.*s", size, &buffer[i]);
 
 	return aluno;
 }
 
 Aluno* fromJson(char* json) {
-	char* nome, numero;
 	signed int mes, dia, ano;
-
-	char* rua, codPostal, localidade;
 	int nPorta;
 
-	char* nomeCurso, nCurso;
-
-	nome = get_value(json, "nome");
-	numero = get_value(json, "numero");
+	char* nome = get_value(json, "nome");
+	char* numero = get_value(json, "numero");
 
 	mes = atoi(get_value(json, "mes"));
 	dia = atoi(get_value(json, "dia"));
 	ano = atoi(get_value(json, "ano"));
 
-	rua = get_value(json, "rua");
-	codPostal = get_value(json, "codPostal");
-	localidade = get_value(json, "localidade");
+	char* rua = get_value(json, "rua");
+	char* codPostal = get_value(json, "codPostal");
+	char* localidade = get_value(json, "localidade");
 	nPorta = atoi(get_value(json, "n_porta"));
 
-	nomeCurso = get_value(json, "curso");
-	nCurso = get_value(json, "n_curso");
+	char* nomeCurso = get_value(json, "curso");
+	char* nCurso = get_value(json, "n_curso");
 
 	Curso* curso = curso_create(nomeCurso, nCurso);
 
 	if (curso != NULL) {							
 		long savedCurso = saveCurso(curso);
 
-		if (savedCurso == 0) {
+		if (savedCurso < 0) {
 			return "false";
 		}
 	}

@@ -35,7 +35,7 @@ Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Mora
 	obj->dataNascimento = dataNascimento;
 	obj->morada = morada;
 	obj->curso = curso;
-	obj->string = "\0";
+	serializeAluno(obj);
 
 	obj->alterarNome = alterar_nome;
 	obj->alterarDataNascimento = alterar_nascimento;
@@ -50,10 +50,10 @@ char* serializeAluno(Aluno* al) {
 
 	size_t len = 0;
 
-	len = snprintf(NULL, len, "%s,%s,%s,%s,%s;\n", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
+	len = snprintf(NULL, len, "%s,%s,%s,%s,%s", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
 
 	al->string = (char*)malloc(len);
-	signed int totalB = snprintf(al->string, len + 1, "%s,%s,%s,%s,%s;\n", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
+	signed int totalB = snprintf(al->string, len + 1, "%s,%s,%s,%s,%s", al->nome, serializeData(&al->dataNascimento), al->n_mecanografico, serializeMorada(&al->morada), serializeCurso(&al->curso));
 
 	if (totalB > len + 1)
 	{
@@ -70,18 +70,31 @@ long saveAluno(Aluno* aluno) {
 	fclose(fp);
 
 	fp = open_file(ALUNOS_INDEX_FILE_PATH);
-	fprintf(fp, "%l|%l,%s,%s;\n", index, strlen(aluno->string), aluno->n_mecanografico, aluno->nome);
+	int len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
+
+	char* aluno_index = (char*) malloc(len + 1);
+
+	snprintf(aluno_index, len, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
+	write_file(aluno_index, fp);
 	fclose(fp);
 
+	free(aluno_index);
+
 	fp = open_file(ALUNOS_CURSO_FILE_PATH);
-	fprintf(fp, "%l|%l,%s,%s;\n", index, strlen(aluno->string), aluno->curso.nome, aluno->nome);
+
+	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
+
+	char* aluno_curso = (char*)malloc(len + 1);
+
+	snprintf(aluno_curso, len, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
+	write_file(aluno_curso, fp);
 	fclose(fp);
+	
 
 	if (index < 0) {
 		perror("Error while saving Aluno %s\n", aluno->n_mecanografico);
 		return 0;
 	}
 
-	fclose(fp);
 	return index;
 }

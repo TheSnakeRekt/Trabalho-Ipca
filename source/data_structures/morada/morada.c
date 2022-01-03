@@ -12,7 +12,7 @@ Morada* morada_create(char* rua, char* codPostal, char* localidade, int signed p
 	obj->rua = rua;
 	obj->porta = porta;
 	obj->localidade = localidade;
-	obj->string = "\0";
+	serializeMorada(obj);
 
 	return obj;
 }

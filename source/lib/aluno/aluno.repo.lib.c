@@ -10,9 +10,9 @@ char* select_aluno(int prop, char* value) {
 		case N_Mecanografico_A:
 			alunoBuffer = byNumero(value); //recebe um numero mecanografico, retorna o aluno com esse numero
 			break;
-		case Curso_Sigla_A:
-			alunoBuffer = byCurso(value); //recebe uma Sigla de curso, retorna todos alunos desse curso
-			break;
+		/*case Curso_Sigla_A:
+			alunoBuffer = byCurso(value); recebe uma Sigla de curso, retorna todos alunos desse curso
+			break;*/
 		default:
 			alunoBuffer = allAlunos(); //retorna todos os Alunos dentro do ficheiro;
 	}

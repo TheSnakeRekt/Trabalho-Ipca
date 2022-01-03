@@ -103,8 +103,14 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\common\aluno.common.c" />
+    <ClCompile Include="source\common\common.c" />
     <ClCompile Include="source\common\curso.common.c" />
     <ClCompile Include="source\data_structures\aluno\aluno.c" />
     <ClCompile Include="source\data_structures\curso\curso.c" />
@@ -113,14 +119,16 @@
     <ClCompile Include="source\lib\algorithms\algorithms.lib.c" />
     <ClCompile Include="source\lib\aluno\aluno.lib.c" />
     <ClCompile Include="source\lib\aluno\aluno.repo.lib.c" />
-    <ClCompile Include="source\lib\curso\curso.lib.c" />
     <ClCompile Include="source\lib\index\index.lib.c" />
     <ClCompile Include="source\lib\json\data_parser.c" />
-	<ClCompile Include="source\storage\storage.c" />
+    <ClCompile Include="source\lib\json\jsmn.c" />
+    <ClCompile Include="source\storage\storage.c" />
     <ClCompile Include="source\main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\common\aluno.common.h" />
     <ClInclude Include="source\common\common.h" />
+    <ClInclude Include="source\common\curso.common.h" />
     <ClInclude Include="source\common\domain.interop.mapper.h" />
     <ClInclude Include="source\common\interop_mapper.h" />
     <ClInclude Include="source\data_structures\aluno\aluno.h" />
@@ -131,7 +139,6 @@
     <ClInclude Include="source\lib\algorithms\algorithms.lib.h" />
     <ClInclude Include="source\lib\aluno\aluno.lib.h" />
     <ClInclude Include="source\lib\aluno\aluno.repo.lib.h" />
-    <ClInclude Include="source\lib\curso\curso.lib.h" />
     <ClInclude Include="source\lib\index\index.lib.h" />
     <ClInclude Include="source\lib\json\data_parser.h" />
     <ClInclude Include="source\lib\json\jsmn.h" />

@@ -1,4 +1,5 @@
-#include "common.h"
+#pragma once
+#include "curso.common.h"
 
 char* curso_op(int op_type, char* data) {
 	switch (op_type) {

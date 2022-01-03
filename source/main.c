@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "common/common.h"
+#include "common/aluno.common.h"
+#include "common/curso.common.h"
+
 
 char* execute(int domain, int op_type, char* data);
 

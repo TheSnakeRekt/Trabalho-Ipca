@@ -13,7 +13,7 @@ Data* data_create(signed int dia, signed int mes, signed int ano) {
 	obj->dia = dia;
 	obj->mes = mes;
 	obj->ano = ano;
-	obj->string = "\0";
+	serializeData(obj);
 
 	return obj;
 }

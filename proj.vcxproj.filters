@@ -52,9 +52,6 @@
     <Filter Include="Header Files\lib\json">
       <UniqueIdentifier>{551eee7b-0d7c-4193-8133-a9b074e6be8f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\lib\curso">
-      <UniqueIdentifier>{09e86d4e-fe0a-44d2-ad74-ded9befc6dea}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.c">
@@ -95,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="source\common\curso.common.c">
       <Filter>Header Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\common\common.c">
+      <Filter>Header Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\json\jsmn.c">
+      <Filter>Header Files\lib\json</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,11 +152,17 @@
     <ClInclude Include="source\lib\json\data_parser.h">
       <Filter>Header Files\lib\json</Filter>
     </ClInclude>
-    <ClInclude Include="source\common\common.h">
+    <ClInclude Include="source\common\aluno.common.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
     <ClInclude Include="source\lib\mapping\aluno_curso_mapping.h">
       <Filter>Header Files\lib\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="source\common\common.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\common\curso.common.h">
+      <Filter>Header Files\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

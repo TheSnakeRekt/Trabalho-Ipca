@@ -64,17 +64,9 @@ char* read_file(FILE* fp) {
 }
 
 long count_lines(FILE* fp, long long rewindSize) {
-	return _llseek(fp, -rewindSize, SEEK_END);
-	/*
-	char ch;
-	int counter = 2;
-
-	while ((ch = fgetc(fp)) != EOF) {
-		if (ch == '\n')
-			i++;
-	}
-
-	return i;*/
+	long long pos = -rewindSize;
+	fseek(fp, pos, SEEK_END);
+	return ftell(fp);
 }
 
 long write_file(char* buffer, FILE* fp) {
@@ -82,7 +74,7 @@ long write_file(char* buffer, FILE* fp) {
 
 	if (fwrite(buffer, bufferLen, 1, fp) >= 1) {
 		rewind(fp);
-		return count_lines(fp, bufferLen);
+		return count_lines(fp, bufferLen) - 1;
 	}
 
 	return -1;
