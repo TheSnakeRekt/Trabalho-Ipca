@@ -188,6 +188,7 @@ Aluno* fromJson(char* json) {
 		long savedCurso = saveCurso(curso);
 
 		if (savedCurso < 0) {
+			perror("Falha ao criar elementos do aluno");
 			return "false";
 		}
 	}
@@ -196,6 +197,7 @@ Aluno* fromJson(char* json) {
 	Morada* morada = morada_create(rua, codPostal, localidade, nPorta);
 	
 	if (dataNascimento == NULL || morada == NULL) {
+		perror("Falha ao criar elementos do aluno");
 		return "false";
 	}
 

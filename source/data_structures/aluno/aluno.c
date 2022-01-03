@@ -70,11 +70,11 @@ long saveAluno(Aluno* aluno) {
 	fclose(fp);
 
 	fp = open_file(ALUNOS_INDEX_FILE_PATH);
-	int len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
+	int len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
 
 	char* aluno_index = (char*) malloc(len + 1);
 
-	snprintf(aluno_index, len, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
+	snprintf(aluno_index, len, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string)-1, aluno->n_mecanografico, aluno->nome);
 	write_file(aluno_index, fp);
 	fclose(fp);
 
@@ -82,11 +82,11 @@ long saveAluno(Aluno* aluno) {
 
 	fp = open_file(ALUNOS_CURSO_FILE_PATH);
 
-	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
+	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
 
 	char* aluno_curso = (char*)malloc(len + 1);
 
-	snprintf(aluno_curso, len, "%d|%d,%s,%s;\n", index, strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
+	snprintf(aluno_curso, len, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string)-1, aluno->curso.nome, aluno->n_mecanografico);
 	write_file(aluno_curso, fp);
 	fclose(fp);
 	
