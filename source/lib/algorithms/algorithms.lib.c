@@ -108,7 +108,8 @@ char* byCurso(char* value) {
 }
 
 char* allAlunos() {
-	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
+	FILE* alunos = open_file(ALUNOS_FILE_PATH);
+	char* allAlunos = read_file(alunos);
 
-	return read_file(alunos);
+	return allAlunos;
 }

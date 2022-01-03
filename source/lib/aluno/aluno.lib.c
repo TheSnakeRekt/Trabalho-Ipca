@@ -3,7 +3,7 @@
 
 char* getNome(char* aluno) {
 	int i = 0;
-	char* nome; 
+	char* nome = "\0";
 
 	for (i = 0; i <strlen(aluno); i++) {
 		if (aluno[i] == ','){
@@ -23,7 +23,7 @@ char* getNumeroMecanografico(char* aluno){
 	int i = 0;
 	int tLen = 0;
 
-	char* n_meca;
+	char* n_meca = "\0";
 
 	for (i = 0; i < strlen(aluno); i++) {
 		if (pos == N_Mecanografico_A) {

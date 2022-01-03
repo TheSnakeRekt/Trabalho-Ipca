@@ -12,6 +12,7 @@ Curso* curso_create(char* nome, char* numero) {
 
 	obj->nome = nome;
 	obj->numero = numero;
+	obj->string = "\0";
 	serializeCurso(obj);
 
 	return obj;
@@ -41,7 +42,7 @@ int cursoExists(char* buffer,char* value) {
 	for (int i = 0; i < strlen(buffer); i++) {
 		if (buffer[i] == '\n') {
 			curso = (char*) malloc(i + 2);
-			sprintf(curso, "%.*s", i+1, &buffer[pos]);
+			sprintf(curso, "%.*s", i, &buffer[pos]);
 			if (strcmp(curso, value) == 0) {
 				return pos;
 			}

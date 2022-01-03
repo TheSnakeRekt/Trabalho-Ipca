@@ -50,14 +50,29 @@ int filehandle_init() {
 
 
 char* read_file(FILE* fp) {
-	char* buffer;
+	char* buffer = NULL;
 
-	fseek(fp, 0, SEEK_END);
-	int lSize = ftell(fp);
-	rewind(fp);
+	if (fseek(fp, 0L, SEEK_END) == 0) {
+		long bufsize = ftell(fp);
+		if (bufsize == -1) { 
+			perror("Error reading file"); 
+		}
 
-	buffer = (char*) malloc(sizeof(char) * lSize) + 1;
-	fread(buffer, 1, lSize, fp);
+		buffer = malloc(sizeof(char) * (bufsize + 1));
+
+		
+		if (fseek(fp, 0L, SEEK_SET) != 0) { 
+			perror("Error reading file");
+		}
+
+		size_t newLen = fread(buffer, sizeof(char), bufsize, fp);
+		if (ferror(fp) != 0) {
+			perror("Error reading file");
+		}
+		else {
+			buffer[newLen++] = '\0'; 
+		}
+	}
 	fclose(fp);
 
 	return buffer;
@@ -71,7 +86,7 @@ long count_lines(FILE* fp, long long rewindSize) {
 
 long write_file(char* buffer, FILE* fp) {
 	long long bufferLen = strlen(buffer);
-
+	
 	if (fwrite(buffer, bufferLen, 1, fp) >= 1) {
 		rewind(fp);
 		return count_lines(fp, bufferLen) - 1;

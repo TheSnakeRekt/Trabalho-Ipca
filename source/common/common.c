@@ -13,6 +13,12 @@ char* del(char* data) {
 
 
 char* find(char* data) {
+
+	//retorna todos os alunos
+	if (strcmp(data,"*") == 0) {
+		return select_aluno("", "");
+	}
+
 	char* prop = atoi(get_value(data, "prop"));
 	char* value = get_value(data, "value");
 

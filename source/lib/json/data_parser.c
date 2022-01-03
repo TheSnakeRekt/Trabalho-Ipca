@@ -18,7 +18,7 @@ char* get_value(char* json, char* key) {
 		perror("Invalid JSON");
 		return "null";
 	}
-	char* str;
+	char* str = "\0";
 	for (int i = 1; i < r; i++) {
 		if (jsoneq(json, &t[i], key) == 0) {
 			
