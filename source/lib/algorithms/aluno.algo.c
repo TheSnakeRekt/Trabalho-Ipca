@@ -1,84 +1,117 @@
 #include "aluno.algo.h"
 
 char* alunosByName(char* value) {
-	char* alunoEncontrado;
+	char* alunosFound = NULL;
+	
 
 	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
 	char* file = read_file(alunos);
 
+	long index[2];
+
 	int counter = 0;
-	long index = -1;
+	int i = 0;
+	int pos = 0;
 
-	for (int i = 0; i < strlen(file); i++) {
-		char* alunoBuffer = "\0";
+	for (i = 0; i < strlen(file); i++) {
+		char* alunoBuffer = NULL;
 
-		if (file[i] == ';') {
-			alunoEncontrado = getNomeIndex(alunoBuffer);
-		} else {
-			strcat(alunoBuffer, file[i]);
+		int j = i;
+		while (file[j] != ';')
+		{
+			j++;
 		}
+		
+		int len = j - i;
 
-		strcat(alunoBuffer, "\0");
+		alunoBuffer = (char*)malloc(len + 1);
+		sprintf(alunoBuffer, "%.*s;", len, &file[i]);
+		
+		char* alunoEncontrado = getNomeIndex(alunoBuffer);
+		char* found = strstr(alunoEncontrado, value);
 
-		if (strcmp(alunoBuffer, value)) {
+		if (found != NULL && strlen(found) > strlen(value) && alunoEncontrado != "\0") {
 
-			index = getIndiceAndSizeIndex(alunoBuffer);
+			free(found);
+			found = NULL;
 
-			break;
+			getIndiceAndSizeIndex(alunoBuffer, index);
+			alunos = open_file(ALUNOS_FILE_PATH);
+
+			
+			char* fileFromPos = readFromBufferPos(alunos, index[0]);
+			
+			
+			long size = index[1] - index[0];
+			if (alunosFound == NULL) {
+				alunosFound = (char*)malloc(size + 1);
+				alunosFound = getAlunoFromBuffer(fileFromPos, size);
+			}
+			else {
+				alunosFound = (char*) realloc(alunosFound,strlen(alunosFound) + size + 1);
+				alunosFound = strcat(alunosFound, getAlunoFromBuffer(fileFromPos, size));
+			}
+			
+			free(fileFromPos);
+			
+			
 		}
+		i = j + 1;
 	}
 
-	alunos = open_file(ALUNOS_FILE_PATH);
-
-	file = read_file(alunos);
-
-	return getAlunoFromBuffer(file, index);
+	return alunosFound;
 }
 
 char* alunoByNumero(char* value) {
-	char* alunoEncontrado;
+	char* alunoEncontrado = "\0";
 
 	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
 	char* file = read_file(alunos);
 
 	int counter = 0;
-	long index = -1;
+	long index[2];
 
 	for (int i = 0; i < strlen(file); i++) {
-		char* alunoBuffer = "\0";
+		char* alunoBuffer = NULL;
 
-		if (file[i] == ';') {
-			alunoEncontrado = getNumeroIndex(alunoBuffer);
+		int j = i;
+		while (file[j] != ';')
+		{
+			j++;
 		}
-		else {
-			strcat(alunoBuffer, file[i]);
-		}
 
-		strcat(alunoBuffer, "\0");
+		int len = j - i;
 
-		if (strcmp(alunoBuffer, value)) {
+		alunoBuffer = (char*)malloc(len + 1);
+		sprintf(alunoBuffer, "%.*s;", len, &file[i]);
+		char* numeroEncontrado = getNumeroIndex(alunoBuffer);
 
-			index = getIndiceAndSizeIndex(alunoBuffer);
+		if (strcmp(numeroEncontrado, value)) {
 
+			getIndiceAndSizeIndex(alunoBuffer, index);
+
+			alunos = open_file(ALUNOS_FILE_PATH);
+
+			char* fileFromPos = readFromBufferPos(alunos, index[0]);
+
+
+			long size = index[1] - index[0];
+			alunoEncontrado = getAlunoFromBuffer(fileFromPos, index);
 			break;
 		}
 	}
 
-	alunos = open_file(ALUNOS_FILE_PATH);
-
-	file = read_file(alunos);
-
-	return getAlunoFromBuffer(file, index);
+	return alunoEncontrado;
 }
 
 char* alunosByCurso(char* value) {
-	char* alunoEncontrado;
+	char* alunoEncontrado = NULL;
 
 	FILE* alunos = open_file(ALUNOS_CURSO_FILE_PATH);
 	char* file = read_file(alunos);
 
 	int counter = 0;
-	long index = -1;
+	long index[2] = { 0 };
 
 	for (int i = 0; i < strlen(file); i++) {
 		char* alunoBuffer = "\0";
@@ -94,8 +127,15 @@ char* alunosByCurso(char* value) {
 
 		if (strcmp(alunoBuffer, value)) {
 
-			index = getIndiceAndSizeIndex(alunoBuffer);
+			getIndiceAndSizeIndex(alunoBuffer, index);
 
+			alunos = open_file(ALUNOS_FILE_PATH);
+
+			char* fileFromPos = readFromBufferPos(alunos, index[0]);
+
+
+			long size = index[1] - index[0];
+			alunoEncontrado = getAlunoFromBuffer(fileFromPos, index);
 			break;
 		}
 	}
@@ -104,7 +144,7 @@ char* alunosByCurso(char* value) {
 
 	file = read_file(alunos);
 
-	return getAlunoFromBuffer(file, index);
+	return alunoEncontrado;
 }
 
 char* allAlunos() {

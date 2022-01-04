@@ -149,15 +149,12 @@ char* getCursoAluno(char* aluno) {
 	return curso;
 }
 
-char* getAlunoFromBuffer(char* buffer, long index[]) {
-	long i = index[0];
-	long size = index[1];
-
+char* getAlunoFromBuffer(char* buffer, long size) {
 	char* aluno;
 
 
 	aluno = (char*) malloc(size + 1);
-	sprintf(aluno, "%.*s", size, &buffer[i]);
+	sprintf(aluno, "%.*s", size, buffer);
 
 	return aluno;
 }

@@ -8,6 +8,5 @@
 
 char* getNomeIndex(char* aluno);
 char* getNumeroIndex(char* aluno);
-long* getIndiceAndSizeIndex(char* aluno);
-
+void getIndiceAndSizeIndex(char* aluno, long indexSize[]);
 

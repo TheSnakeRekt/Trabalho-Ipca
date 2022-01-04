@@ -16,5 +16,5 @@ char* getNumeroMecanograficoAluno(char* aluno);
 char* getDataNascimentoAluno(char* aluno);
 char* getMoradaAluno(char* aluno);
 char* getCursoAluno(char* aluno);
-char* getAlunoFromBuffer(char* buffer, long index[]);
+char* getAlunoFromBuffer(char* buffer, long size);
 Aluno* alunoFromJson(char* json);

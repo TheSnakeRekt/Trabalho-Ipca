@@ -29,3 +29,4 @@ int filehandle_init();
 char* read_file(FILE* fp);
 long count_lines(FILE* fp, long long bufferSize);
 long write_file(char* buffer, FILE* fp);
+char* readFromBufferPos(FILE* fp, long long rewindSize);

@@ -7,7 +7,7 @@ char* cursosByName(char* value) {
 	char* file = read_file(cursos);
 
 	int counter = 0;
-	long index = -1;
+	long index[2] = { 0 };
 
 	for (int i = 0; i < strlen(file); i++) {
 		char* cursoBuffer = "\0";
@@ -23,7 +23,7 @@ char* cursosByName(char* value) {
 
 		if (strcmp(cursoBuffer, value)) {
 
-			index = getIndiceAndSizeIndex(cursoBuffer);
+			getIndiceAndSizeIndex(cursoBuffer, index);
 
 			break;
 		}
