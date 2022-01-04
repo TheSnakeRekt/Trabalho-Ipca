@@ -7,7 +7,7 @@ char* curso_op(int op_type, char* data) {
 	case Delete:
 		return delete_curso(data);
 	case Create:
-		return create_curso(data);
+		return insert_curso(data);
 	case Mod:
 		return update_curso(data);
 	default:

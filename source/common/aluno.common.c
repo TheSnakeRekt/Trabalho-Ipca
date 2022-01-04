@@ -9,7 +9,7 @@ char* aluno_op(int op_type, char* data) {
 	/*case Delete:
 		return del(data);*/
 	case Create:
-		return create_aluno(data);
+		return insert_aluno(data);
 	default:
 		return "null";
 	}

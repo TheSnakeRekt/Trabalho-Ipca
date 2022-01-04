@@ -24,6 +24,6 @@ char* find_curso(char* data) {
 	return select_curso(prop, value);
 }
 
-char* create_curso(char* value) {
+char* insert_curso(char* value) {
 	return save_curso(value);
 }

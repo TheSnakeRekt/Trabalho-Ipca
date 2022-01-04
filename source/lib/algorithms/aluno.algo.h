@@ -4,6 +4,6 @@
 #include "../index/index.lib.h"
 
 char* alunosByName(char* value);
-char* alunobyNumero(char* value);
-char* alunosbyCurso(char* value);
+char* alunoByNumero(char* value);
+char* alunosByCurso(char* value);
 char* allAlunos();

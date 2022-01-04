@@ -6,14 +6,15 @@
 
 #include "../json/data_parser.h"
 #include "../../data_structures/aluno/aluno.h"
+#include "../algorithms/aluno.algo.h"
 #include "../mapping/aluno_mapping.h"
 
 
 
-char* getNome(char* aluno);
-char* getNumeroMecanografico(char* aluno);
-char* getDataNascimento(char* aluno);
-char* getMorada(char* aluno);
-char* getCurso(char* aluno);
+char* getNomeAluno(char* aluno);
+char* getNumeroMecanograficoAluno(char* aluno);
+char* getDataNascimentoAluno(char* aluno);
+char* getMoradaAluno(char* aluno);
+char* getCursoAluno(char* aluno);
 char* getAlunoFromBuffer(char* buffer, long index[]);
-Aluno* fromJson(char* json);
+Aluno* alunoFromJson(char* json);

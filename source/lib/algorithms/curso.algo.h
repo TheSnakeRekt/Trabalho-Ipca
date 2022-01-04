@@ -4,5 +4,5 @@
 #include "../index/index.lib.h"
 
 char* cursosByName(char* value);
-char* cursobyNumero(char* value);
+char* cursoByNumero(char* value);
 char* allCursos();

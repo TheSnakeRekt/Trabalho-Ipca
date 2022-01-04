@@ -52,6 +52,12 @@
     <Filter Include="Header Files\lib\json">
       <UniqueIdentifier>{551eee7b-0d7c-4193-8133-a9b074e6be8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{cf872f93-c13b-4738-906f-083cf4fe0a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\curso">
+      <UniqueIdentifier>{033bbe9f-e63b-44cf-ac97-e9e7850f3313}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.c">
@@ -81,9 +87,6 @@
     <ClCompile Include="source\lib\aluno\aluno.repo.lib.c">
       <Filter>Header Files\lib\aluno</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\algorithms\algorithms.lib.c">
-      <Filter>Header Files\lib\algorithms</Filter>
-    </ClCompile>
     <ClCompile Include="source\common\aluno.common.c">
       <Filter>Header Files\common</Filter>
     </ClCompile>
@@ -93,11 +96,26 @@
     <ClCompile Include="source\common\curso.common.c">
       <Filter>Header Files\common</Filter>
     </ClCompile>
-    <ClCompile Include="source\common\common.c">
-      <Filter>Header Files\common</Filter>
-    </ClCompile>
     <ClCompile Include="source\lib\json\jsmn.c">
       <Filter>Header Files\lib\json</Filter>
+    </ClCompile>
+    <ClCompile Include="source\controller\aluno.controller.c">
+      <Filter>Header Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="source\controller\curso.controller.c">
+      <Filter>Header Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\algorithms\aluno.algo.c">
+      <Filter>Header Files\lib\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\algorithms\curso.algo.c">
+      <Filter>Header Files\lib\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\curso\curso.lib.c">
+      <Filter>Header Files\lib\curso</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\curso\curso.repo.lib.c">
+      <Filter>Header Files\lib\curso</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +155,6 @@
     <ClInclude Include="source\lib\aluno\aluno.repo.lib.h">
       <Filter>Header Files\lib\aluno</Filter>
     </ClInclude>
-    <ClInclude Include="source\lib\algorithms\algorithms.lib.h">
-      <Filter>Header Files\lib\algorithms</Filter>
-    </ClInclude>
     <ClInclude Include="source\common\domain.interop.mapper.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
@@ -158,11 +173,26 @@
     <ClInclude Include="source\lib\mapping\aluno_curso_mapping.h">
       <Filter>Header Files\lib\mapping</Filter>
     </ClInclude>
-    <ClInclude Include="source\common\common.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
     <ClInclude Include="source\common\curso.common.h">
       <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\controller\aluno.controller.h">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="source\controller\curso.controller.h">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\algorithms\aluno.algo.h">
+      <Filter>Header Files\lib\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\algorithms\curso.algo.h">
+      <Filter>Header Files\lib\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\curso\curso.lib.h">
+      <Filter>Header Files\lib\curso</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\curso\curso.repo.lib.h">
+      <Filter>Header Files\lib\curso</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

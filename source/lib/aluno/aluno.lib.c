@@ -1,7 +1,6 @@
 #include "aluno.lib.h"
 
-
-char* getNome(char* aluno) {
+char* getNomeAluno(char* aluno) {
 	int i = 0;
 	char* nome = "\0";
 
@@ -18,7 +17,7 @@ char* getNome(char* aluno) {
 	return nome;
 }
 
-char* getNumeroMecanografico(char* aluno){
+char* getNumeroMecanograficoAluno(char* aluno){
 	int pos = 0;
 	int i = 0;
 	int tLen = 0;
@@ -47,7 +46,7 @@ char* getNumeroMecanografico(char* aluno){
 	return n_meca;
 }
 
-char* getDataNascimento(char* aluno) {
+char* getDataNascimentoAluno(char* aluno) {
 	int pos = 0;
 	int i = 0;
 	int tLen = 0;
@@ -77,7 +76,7 @@ char* getDataNascimento(char* aluno) {
 	return dataNascimento;
 }
 
-char* getMorada(char* aluno) {
+char* getMoradaAluno(char* aluno) {
 	int pos = 0;
 	int start = 0;
 	int lastValuePos = 0;
@@ -119,7 +118,7 @@ char* getMorada(char* aluno) {
 	return morada;
 }
 
-char* getCurso(char* aluno) {
+char* getCursoAluno(char* aluno) {
 	int pos = 0;
 	int i = 0;
 	int tLen = 0;
@@ -163,7 +162,7 @@ char* getAlunoFromBuffer(char* buffer, long index[]) {
 	return aluno;
 }
 
-Aluno* fromJson(char* json) {
+Aluno* alunoFromJson(char* json) {
 	signed int mes, dia, ano;
 	int nPorta;
 

@@ -7,3 +7,7 @@
 #include "../json/data_parser.h"
 #include "../../data_structures/curso/curso.h"
 #include "../mapping/curso_mapping.h"
+
+char* getCursoName(char* value);
+char* getCursoNumero(char* value);
+char* getCursoFromBuffer(char* value, int index);

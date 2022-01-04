@@ -6,5 +6,5 @@
 
 char* update_curso(char* data);
 char* find_curso(char* data);
-char* create_curso(char* value);
+char* insert_curso(char* value);
 char* delete_curso(char* value);

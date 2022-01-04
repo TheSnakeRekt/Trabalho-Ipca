@@ -1,6 +1,6 @@
 #pragma once
 #include "aluno.lib.h"
-#include "../algorithms/algorithms.lib.h"
+#include "../algorithms/aluno.algo.h"
 #include "../../storage/storage.h"
 
 char* select_aluno(int prop, char* value);

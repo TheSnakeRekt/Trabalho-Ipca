@@ -7,4 +7,4 @@
 
 char* update_aluno(char* data);
 char* find_aluno(char* data);
-char* create_aluno(char* value);
+char* insert_aluno(char* value);

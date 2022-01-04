@@ -25,6 +25,6 @@ char* find_aluno(char* data) {
 	return select_aluno(prop, value);
 }
 
-char* create_aluno(char* value) {
+char* insert_aluno(char* value) {
 	return save_aluno(value);
 }

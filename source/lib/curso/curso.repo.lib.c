@@ -6,7 +6,7 @@ char* select_curso(int prop, char* value) {
 
 	switch (prop) {
 	case Nome_C:
-		cursoBuffer = cursoByName(value); //recebe um nome ou parte de um nome, retorna os cursos que contenham esse nome
+		cursoBuffer = cursosByName(value); //recebe um nome ou parte de um nome, retorna os cursos que contenham esse nome
 		break;
 	case Numero_C:
 		cursoBuffer = cursoByNumero(value); //recebe um numero de curso, retorna o curso com esse numero
@@ -16,4 +16,12 @@ char* select_curso(int prop, char* value) {
 	}
 
 	return cursoBuffer;
+}
+
+char* save_curso(char* json) {
+	return "";
+}
+
+char* mod_curso(char* curso) {
+	return "";
 }

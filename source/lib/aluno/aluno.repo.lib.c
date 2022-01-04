@@ -1,17 +1,17 @@
-#include "../algorithms/aluno.algo.h"
+#include "aluno.lib.h"
 
 char* select_aluno(int prop, char* value) {
 	char* alunoBuffer = "\0";
 
 	switch (prop) {
 		case Nome_A:
-			alunoBuffer = byName(value); //recebe um nome ou parte de um nome, retorna os alunos que contenham esse nome
+			alunoBuffer = alunosByName(value); //recebe um nome ou parte de um nome, retorna os alunos que contenham esse nome
 			break;
 		case N_Mecanografico_A:
-			alunoBuffer = byNumero(value); //recebe um numero mecanografico, retorna o aluno com esse numero
+			alunoBuffer = alunoByNumero(value); //recebe um numero mecanografico, retorna o aluno com esse numero
 			break;
 		/*case Curso_Sigla_A:
-			alunoBuffer = byCurso(value); recebe uma Sigla de curso, retorna todos alunos desse curso
+			alunoBuffer = alunosByCurso(value); recebe uma Sigla de curso, retorna todos alunos desse curso
 			break;*/
 		default:
 			alunoBuffer = allAlunos(); //retorna todos os Alunos dentro do ficheiro;
@@ -25,7 +25,7 @@ char* select_aluno(int prop, char* value) {
 */
 char* save_aluno(char* json) {
 
-	Aluno* aluno = fromJson(json);
+	Aluno* aluno = alunoFromJson(json);
 
 	if (aluno == NULL) {
 		return "false";
@@ -41,7 +41,7 @@ char* save_aluno(char* json) {
 
 char* mod_aluno(char* json) {
 
-	Aluno* aluno = fromJson(json);
+	Aluno* aluno = alunoFromJson(json);
 
 	if (aluno == NULL) {
 		return "false";
