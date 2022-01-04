@@ -3,13 +3,13 @@
 char* aluno_op(int op_type, char* data) {
 	switch (op_type) {
 	case Select:
-		return find(data);
+		return find_aluno(data);
 	case Mod:
-		return mod(data);
+		return update_aluno(data);
 	/*case Delete:
 		return del(data);*/
 	case Create:
-		return create(data);
+		return create_aluno(data);
 	default:
 		return "null";
 	}

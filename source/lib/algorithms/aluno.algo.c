@@ -1,6 +1,6 @@
-#include "algorithms.lib.h"
+#include "aluno.algo.h"
 
-char* byName(char* value) {
+char* alunosByName(char* value) {
 	char* alunoEncontrado;
 
 	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
@@ -35,7 +35,7 @@ char* byName(char* value) {
 	return getAlunoFromBuffer(file, index);
 }
 
-char* byNumero(char* value) {
+char* alunoByNumero(char* value) {
 	char* alunoEncontrado;
 
 	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
@@ -71,7 +71,7 @@ char* byNumero(char* value) {
 	return getAlunoFromBuffer(file, index);
 }
 
-char* byCurso(char* value) {
+char* alunosByCurso(char* value) {
 	char* alunoEncontrado;
 
 	FILE* alunos = open_file(ALUNOS_CURSO_FILE_PATH);

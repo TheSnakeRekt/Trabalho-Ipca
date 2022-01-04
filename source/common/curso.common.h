@@ -1,4 +1,5 @@
 #pragma once
+#include "../controller/curso.controller.h"
 #include "../data_structures/types.h"
 #include "interop_mapper.h"
 

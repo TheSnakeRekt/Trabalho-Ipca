@@ -1,14 +1,15 @@
-#pragma once
 #include "curso.common.h"
 
 char* curso_op(int op_type, char* data) {
 	switch (op_type) {
 	case Select:
-		return find(data);
+		return find_curso(data);
 	case Delete:
-		return del(data);
+		return delete_curso(data);
 	case Create:
-		return create(data);
+		return create_curso(data);
+	case Mod:
+		return update_curso(data);
 	default:
 		return "null";
 	}

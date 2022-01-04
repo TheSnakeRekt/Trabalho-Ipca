@@ -3,8 +3,8 @@
 #include "../lib/mapping/aluno_mapping.h"
 #include "../lib/aluno/aluno.repo.lib.h"
 #include "../lib/json/data_parser.h"
-#include "domain.interop.mapper.h"
+#include "../common/domain.interop.mapper.h"
 
-char* mod(char* data);
-char* find(char* data);
-char* create(char* value);
+char* update_aluno(char* data);
+char* find_aluno(char* data);
+char* create_aluno(char* value);

@@ -1,4 +1,4 @@
-#include "aluno.repo.lib.h"
+#include "../algorithms/aluno.algo.h"
 
 char* select_aluno(int prop, char* value) {
 	char* alunoBuffer = "\0";

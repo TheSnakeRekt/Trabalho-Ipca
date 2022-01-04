@@ -1,6 +1,6 @@
-#include "common.h"
+#include "aluno.controller.h"
 
-char* mod(char* data) {
+char* update_aluno(char* data) {
 	char* nMeca = get_value(data, "n_meca");
 	char* alunoBuffer = select_aluno(N_Mecanografico_A, nMeca);
 
@@ -12,10 +12,10 @@ char* del(char* data) {
 };
 
 
-char* find(char* data) {
+char* find_aluno(char* data) {
 
 	//retorna todos os alunos
-	if (strcmp(data,"*") == 0) {
+	if (strcmp(data, "*") == 0) {
 		return select_aluno("", "");
 	}
 
@@ -25,6 +25,6 @@ char* find(char* data) {
 	return select_aluno(prop, value);
 }
 
-char* create(char* value) {
+char* create_aluno(char* value) {
 	return save_aluno(value);
 }
