@@ -10,4 +10,4 @@
 
 char* getCursoName(char* value);
 char* getCursoNumero(char* value);
-char* getCursoFromBuffer(char* value, int index);
+Curso* cursoFromJson(char* json);

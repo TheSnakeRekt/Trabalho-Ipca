@@ -159,12 +159,24 @@ char* getAlunoFromBuffer(char* buffer, long size) {
 	return aluno;
 }
 
+int alunoExists(char* value) {
+	if (alunoByNumero(value) != NULL) {
+		return 1;
+	}
+	return 0;
+}
+
 Aluno* alunoFromJson(char* json) {
 	signed int mes, dia, ano;
 	int nPorta;
 
 	char* nome = get_value(json, "nome");
 	char* numero = get_value(json, "numero");
+
+	if (alunoExists(numero) == 1) {
+		perror("O Aluno %s numero já existe.", numero);
+		return NULL;
+	}
 
 	mes = atoi(get_value(json, "mes"));
 	dia = atoi(get_value(json, "dia"));
@@ -175,10 +187,7 @@ Aluno* alunoFromJson(char* json) {
 	char* localidade = get_value(json, "localidade");
 	nPorta = atoi(get_value(json, "n_porta"));
 
-	char* nomeCurso = get_value(json, "curso");
-	char* nCurso = get_value(json, "n_curso");
-
-	Curso* curso = curso_create(nomeCurso, nCurso);
+	Curso* curso = cursoFromJson(json);
 
 	if (curso != NULL) {							
 		long savedCurso = saveCurso(curso);

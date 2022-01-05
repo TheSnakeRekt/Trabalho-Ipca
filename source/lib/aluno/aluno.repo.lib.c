@@ -10,15 +10,17 @@ char* select_aluno(int prop, char* value) {
 		case N_Mecanografico_A:
 			alunoBuffer = alunoByNumero(value); //recebe um numero mecanografico, retorna o aluno com esse numero
 			break;
-		/*case Curso_Sigla_A:
-			alunoBuffer = alunosByCurso(value); recebe uma Sigla de curso, retorna todos alunos desse curso
-			break;*/
+		case Curso_Numero_A:
+			alunoBuffer = alunosByCurso(value); //recebe uma Sigla de curso, retorna todos alunos desse curso
+			break;
 		default:
 			alunoBuffer = allAlunos(); //retorna todos os Alunos dentro do ficheiro;
 	}
 
 	return alunoBuffer;
 }
+
+
 
 /*
 	Recebe um aluno em formato JSON, e guarda o mesmo no ficheiro de alunos, assim como os seus indices
@@ -53,3 +55,4 @@ char* mod_aluno(char* json) {
 	}
 	return "true";
 }
+

@@ -63,12 +63,11 @@ char* alunosByName(char* value) {
 }
 
 char* alunoByNumero(char* value) {
-	char* alunoEncontrado = "\0";
+	char* alunoEncontrado = NULL;
 
 	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
 	char* file = read_file(alunos);
 
-	int counter = 0;
 	long index[2];
 
 	for (int i = 0; i < strlen(file); i++) {
@@ -86,7 +85,7 @@ char* alunoByNumero(char* value) {
 		sprintf(alunoBuffer, "%.*s;", len, &file[i]);
 		char* numeroEncontrado = getNumeroIndex(alunoBuffer);
 
-		if (strcmp(numeroEncontrado, value)) {
+		if (strcmp(numeroEncontrado, value) == 0) {
 
 			getIndiceAndSizeIndex(alunoBuffer, index);
 
@@ -96,7 +95,8 @@ char* alunoByNumero(char* value) {
 
 
 			long size = index[1] - index[0];
-			alunoEncontrado = getAlunoFromBuffer(fileFromPos, index);
+			alunoEncontrado = (char*)malloc(size + 1);
+			alunoEncontrado = getAlunoFromBuffer(fileFromPos, size);
 			break;
 		}
 	}
@@ -105,46 +105,61 @@ char* alunoByNumero(char* value) {
 }
 
 char* alunosByCurso(char* value) {
-	char* alunoEncontrado = NULL;
+	char* alunosFound = NULL;
+
 
 	FILE* alunos = open_file(ALUNOS_CURSO_FILE_PATH);
 	char* file = read_file(alunos);
 
+	long index[2];
+
 	int counter = 0;
-	long index[2] = { 0 };
+	int i = 0;
+	int pos = 0;
 
-	for (int i = 0; i < strlen(file); i++) {
-		char* alunoBuffer = "\0";
+	for (i = 0; i < strlen(file); i++) {
+		char* curso_aluno = NULL;
 
-		if (file[i] == ';') {
-			alunoEncontrado = getNumeroIndex(alunoBuffer);
+		int j = i;
+		while (file[j] != ';')
+		{
+			j++;
 		}
-		else {
-			strcat_s(alunoBuffer, strlen(alunoBuffer), file[i]);
-		}
 
-		strcat_s(alunoBuffer, strlen(alunoBuffer), "\0");
+		int len = j - i;
 
-		if (strcmp(alunoBuffer, value)) {
+		curso_aluno = (char*) malloc(len + 1);
+		sprintf(curso_aluno, "%.*s;", len, &file[i]);
 
-			getIndiceAndSizeIndex(alunoBuffer, index);
+		char* nCursoEncontrado = getNCursoIndex(curso_aluno);
 
+		if (strcmp(nCursoEncontrado, value) == 0) {
+
+			getIndiceAndSizeIndex(curso_aluno, index);
 			alunos = open_file(ALUNOS_FILE_PATH);
+
 
 			char* fileFromPos = readFromBufferPos(alunos, index[0]);
 
 
 			long size = index[1] - index[0];
-			alunoEncontrado = getAlunoFromBuffer(fileFromPos, index);
-			break;
+			if (alunosFound == NULL) {
+				alunosFound = (char*)malloc(size + 1);
+				alunosFound = getAlunoFromBuffer(fileFromPos, size);
+			}
+			else {
+				alunosFound = (char*)realloc(alunosFound, strlen(alunosFound) + size + 1);
+				alunosFound = strcat(alunosFound, getAlunoFromBuffer(fileFromPos, size));
+			}
+
+			free(fileFromPos);
+
+
 		}
+		i = j + 1;
 	}
 
-	alunos = open_file(ALUNOS_FILE_PATH);
-
-	file = read_file(alunos);
-
-	return alunoEncontrado;
+	return alunosFound;
 }
 
 char* allAlunos() {

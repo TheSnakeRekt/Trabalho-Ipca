@@ -8,7 +8,7 @@
 #include "../../data_structures/aluno/aluno.h"
 #include "../algorithms/aluno.algo.h"
 #include "../mapping/aluno_mapping.h"
-
+#include "../curso/curso.lib.h"
 
 
 char* getNomeAluno(char* aluno);

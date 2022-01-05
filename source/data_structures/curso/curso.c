@@ -63,7 +63,7 @@ long saveCurso(Curso* curso) {
 	}
 
 	fp = open_file(CURSOS_FILE_PATH);
-	int i = write_file(curso->string, fp);
+	long i = write_file(curso->string, fp);
 	fclose(fp);
 
 	if (i < 0) {

@@ -83,7 +83,7 @@ long saveAluno(Aluno* aluno) {
 
 	fp = open_file(ALUNOS_CURSO_FILE_PATH);
 
-	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.nome, aluno->n_mecanografico);
+	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.numero, aluno->n_mecanografico);
 
 	char* aluno_curso = (char*)malloc(len + 1);
 

@@ -1,15 +1,15 @@
 #include "index.lib.h"
 
-char* getNomeIndex(char* aluno) {
+char* getNomeIndex(char* buffer) {
 	int i = 0;
 	int tLen = 0;
 	int pos = 0;
 	char* nome = NULL;
 
-	for (i = 0; i < strlen(aluno); i++) {
+	for (i = 0; i < strlen(buffer); i++) {
 		if (pos == Nome_Aluno_I) {
 			int j = i + 1;
-			while (aluno[j] != ';')
+			while (buffer[j] != ';')
 			{
 				j++;
 			}
@@ -17,28 +17,28 @@ char* getNomeIndex(char* aluno) {
 
 			break;
 		}
-		else if (aluno[i] == ',') {
+		else if (buffer[i] == ',') {
 			pos++;
 		}
 	}
 
 	nome = (char*) malloc(tLen + 1);
 
-	sprintf(nome, "%.*s", tLen, &aluno[i]);
+	sprintf(nome, "%.*s", tLen, &buffer[i]);
 
 	return nome;
 }
 
-char* getNumeroIndex(char* aluno) {
+char* getNumeroIndex(char* buffer) {
 	int i = 0;
 	int tLen = 0;
 	int pos = 0;
-	char* nome;
+	char* numero = "\0";
 
-	for (i = 0; i < strlen(aluno); i++) {
-		if (pos == N_Mecanografico_I) {
+	for (i = 0; i < strlen(buffer); i++) {
+		if (pos == Aluno_Index_C) {
 			int j = i + 1;
-			while (aluno[j] != ';')
+			while (buffer[j] != ',')
 			{
 				j++;
 			}
@@ -46,16 +46,78 @@ char* getNumeroIndex(char* aluno) {
 
 			break;
 		}
-		else if (aluno[i] == ',') {
+		else if (buffer[i] == ',') {
 			pos++;
 		}
 	}
 
-	nome = (char*)malloc(tLen + 1);
+	numero = (char*)malloc(tLen + 1);
 
-	sprintf(nome, "%.*s\n", tLen, &aluno[i]);
+	sprintf(numero, "%.*s", tLen, &buffer[i]);
 
-	return nome;
+	return numero;
+}
+
+char* getNCursoIndex(char* buffer) {
+	int i = 0;
+	int tLen = 0;
+	int pos = 0;
+	char* nCurso;
+
+	for (i = 0; i < strlen(buffer); i++) {
+		if (pos == Curso_Numero_C - 1) {
+			
+			int j = i + 1;
+			if (buffer[i] == ',') {
+				break;
+			}
+			while (buffer[j] != ',')
+			{
+				j++;
+			}
+			tLen = j - i;
+
+			break;
+		}
+		else if (buffer[i] == ',') {
+			pos++;
+		}
+	}
+
+	nCurso = (char*)malloc(tLen + 1);
+
+	sprintf(nCurso, "%.*s", tLen, &buffer[i]);
+
+	return nCurso;
+}
+
+char* getNMecaIndex(char* buffer) {
+	int i = 0;
+	int tLen = 0;
+	int pos = 0;
+	char* nMeca;
+
+	for (i = 0; i < strlen(buffer); i++) {
+		if (pos == N_Mecanografico_I) {
+			int j = i + 1;
+			while (buffer[j] != ';')
+			{
+				j++;
+			}
+			tLen = j - i;
+
+			break;
+		}
+		else if (buffer[i] == ',') {
+			pos++;
+		}
+	}
+
+	nMeca = (char*)malloc(tLen + 1);
+
+	sprintf(nMeca, "%.*s\n", tLen, &buffer[i]);
+
+	return nMeca;
 }
 
 void getIndiceAndSizeIndex(char* aluno, long indexSize[]) {

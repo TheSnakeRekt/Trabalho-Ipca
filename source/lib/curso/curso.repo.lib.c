@@ -19,7 +19,19 @@ char* select_curso(int prop, char* value) {
 }
 
 char* save_curso(char* json) {
-	return "";
+	char* result = "false";
+	Curso* curso = cursoFromJson(json);
+
+	if (curso != NULL) {
+		long savedCurso = saveCurso(curso);
+
+		if (savedCurso < 0) {
+			perror("Falha ao criar elementos do aluno");
+		}
+		result = "true";
+	}
+
+	return result;
 }
 
 char* mod_curso(char* curso) {
