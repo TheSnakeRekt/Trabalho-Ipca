@@ -123,9 +123,11 @@
     <ClCompile Include="source\lib\aluno\aluno.repo.lib.c" />
     <ClCompile Include="source\lib\curso\curso.lib.c" />
     <ClCompile Include="source\lib\curso\curso.repo.lib.c" />
+    <ClCompile Include="source\lib\data\data.lib.c" />
     <ClCompile Include="source\lib\index\index.lib.c" />
     <ClCompile Include="source\lib\json\data_parser.c" />
     <ClCompile Include="source\lib\json\jsmn.c" />
+    <ClCompile Include="source\lib\morada\morada.lib.c" />
     <ClCompile Include="source\storage\storage.c" />
     <ClCompile Include="source\main.c" />
   </ItemGroup>
@@ -147,12 +149,14 @@
     <ClInclude Include="source\lib\aluno\aluno.repo.lib.h" />
     <ClInclude Include="source\lib\curso\curso.lib.h" />
     <ClInclude Include="source\lib\curso\curso.repo.lib.h" />
+    <ClInclude Include="source\lib\data\data.lib.h" />
     <ClInclude Include="source\lib\index\index.lib.h" />
     <ClInclude Include="source\lib\json\data_parser.h" />
     <ClInclude Include="source\lib\json\jsmn.h" />
     <ClInclude Include="source\lib\mapping\aluno_curso_mapping.h" />
     <ClInclude Include="source\lib\mapping\aluno_index_mapping.h" />
     <ClInclude Include="source\lib\mapping\aluno_mapping.h" />
+    <ClInclude Include="source\lib\morada\morada.lib.h" />
     <ClInclude Include="source\storage\storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

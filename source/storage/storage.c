@@ -26,6 +26,10 @@ FILE* open_file(const char* fileName) {
 	return fopen(fileName, "a+");
 }
 
+FILE* openw_file(const char* fileName) {
+	return fopen(fileName, "w+");
+}
+
 int filehandle_init() {
 
 	int i = 0;

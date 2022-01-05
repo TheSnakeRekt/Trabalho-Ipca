@@ -7,8 +7,9 @@ char* update_aluno(char* data) {
 	return mod_aluno(alunoBuffer);
 }
 
-char* del(char* data) {
-	return "null";
+char* remove_aluno(char* data) {
+	char* value = get_value(data, "value");
+	return delete_aluno(value);
 };
 
 
@@ -19,7 +20,7 @@ char* find_aluno(char* data) {
 		return select_aluno("", "");
 	}
 
-	char* prop = atoi(get_value(data, "prop"));
+	int prop = atoi(get_value(data, "prop"));
 	char* value = get_value(data, "value");
 
 	return select_aluno(prop, value);

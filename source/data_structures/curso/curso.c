@@ -40,13 +40,12 @@ int cursoExists(char* buffer,char* value) {
 	char* curso;
 
 	for (int i = 0; i < strlen(buffer); i++) {
-		if (buffer[i] == '\n') {
+		if (buffer[i] == ';') {
 			curso = (char*) malloc(i + 2);
-			sprintf(curso, "%.*s\n", i, &buffer[pos]);
+			sprintf(curso, "%.*s;\n", i, &buffer[pos]);
 			if (strcmp(curso, value) == 0) {
 				return pos;
 			}
-			pos = i;
 		}
 	}
 

@@ -1,8 +1,17 @@
 #include "aluno.lib.h"
 
+
+AlunoArray* new_node(Aluno al) {
+	AlunoArray* alunoList = malloc(sizeof(AlunoArray));
+
+	alunoList->aluno = al;
+	alunoList->next = NULL;
+
+	return alunoList;
+}
+
 char* getNomeAluno(char* aluno) {
 	int i = 0;
-	char* nome = "\0";
 
 	for (i = 0; i <strlen(aluno); i++) {
 		if (aluno[i] == ','){
@@ -10,9 +19,9 @@ char* getNomeAluno(char* aluno) {
 		}
 	}
 
-	nome = (char*)malloc(i + 1);
+	char* nome = (char*)malloc(i + 1);
 	
-	sprintf(nome, "%.*s\n", i, aluno);
+	sprintf(nome, "%.*s", i, aluno);
 
 	return nome;
 }
@@ -21,8 +30,6 @@ char* getNumeroMecanograficoAluno(char* aluno){
 	int pos = 0;
 	int i = 0;
 	int tLen = 0;
-
-	char* n_meca = "\0";
 
 	for (i = 0; i < strlen(aluno); i++) {
 		if (pos == N_Mecanografico_A) {
@@ -40,9 +47,9 @@ char* getNumeroMecanograficoAluno(char* aluno){
 		}
 	}
 
-	n_meca = (char*)malloc(tLen + 1);
-	sprintf(n_meca, "%.*s\n", tLen, &aluno[i]);
-
+	char* n_meca = (char*)malloc(tLen + 1);
+	sprintf(n_meca, "%.*s", tLen, &aluno[i]);
+	
 	return n_meca;
 }
 
@@ -159,11 +166,72 @@ char* getAlunoFromBuffer(char* buffer, long size) {
 	return aluno;
 }
 
+
 int alunoExists(char* value) {
 	if (alunoByNumero(value) != NULL) {
 		return 1;
 	}
 	return 0;
+}
+
+
+AlunoArray* alunosFromBuffer(char* buffer) {
+	AlunoArray* alunoArray = NULL;
+
+
+	for (int i = 0; i < strlen(buffer); i++) {
+		int j = i;
+		while (buffer[j] != ';')
+		{
+			j++;
+		}
+
+		int len = j - i;
+
+		char* alunoBuffer = (char*)malloc(len + 1);
+		sprintf(alunoBuffer, "%.*s;", len, &buffer[i]);
+
+		Data* data = dataFromBuffer(alunoBuffer);
+		Curso* curso = cursoFromBuffer(alunoBuffer);
+		Morada* morada = moradaFromBuffer(alunoBuffer);
+		char* nome = getNomeAluno(alunoBuffer);
+		char* nMeca = getNumeroMecanograficoAluno(alunoBuffer);
+
+		
+		if (curso == NULL || data == NULL || morada == NULL || strcmp(nome, "") == 0 || strcmp(nMeca, "") == 0 || strstr(nMeca,",") > 0) {
+			continue;
+		}
+
+		Aluno* aluno = create_aluno(nome, nMeca, *data,
+			*morada, *curso);
+
+		if (aluno == NULL) {
+			continue;
+		}
+
+		if (alunoArray == NULL) {
+			alunoArray = malloc(sizeof(AlunoArray));
+
+			alunoArray->aluno = *aluno;
+			alunoArray->next = NULL;
+		}
+		else {
+			AlunoArray* tmp = malloc(sizeof(AlunoArray));
+			AlunoArray* node = new_node(*aluno);
+
+			tmp = alunoArray;
+			while (alunoArray->next != NULL) {
+				alunoArray = alunoArray->next;
+			}
+
+			alunoArray->next = node;
+			alunoArray = tmp;
+		}
+
+		i = j + 1;
+	}
+
+	return alunoArray;
 }
 
 Aluno* alunoFromJson(char* json) {
@@ -174,7 +242,7 @@ Aluno* alunoFromJson(char* json) {
 	char* numero = get_value(json, "numero");
 
 	if (alunoExists(numero) == 1) {
-		perror("O Aluno %s numero já existe.", numero);
+		perror("O Aluno ja existe.");
 		return NULL;
 	}
 
@@ -188,16 +256,6 @@ Aluno* alunoFromJson(char* json) {
 	nPorta = atoi(get_value(json, "n_porta"));
 
 	Curso* curso = cursoFromJson(json);
-
-	if (curso != NULL) {							
-		long savedCurso = saveCurso(curso);
-
-		if (savedCurso < 0) {
-			perror("Falha ao criar elementos do aluno");
-			return "false";
-		}
-	}
-
 	Data* dataNascimento = data_create(dia, mes, ano);
 	Morada* morada = morada_create(rua, codPostal, localidade, nPorta);
 	

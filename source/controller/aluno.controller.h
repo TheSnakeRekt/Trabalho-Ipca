@@ -8,3 +8,4 @@
 char* update_aluno(char* data);
 char* find_aluno(char* data);
 char* insert_aluno(char* value);
+char* remove_aluno(char* data);

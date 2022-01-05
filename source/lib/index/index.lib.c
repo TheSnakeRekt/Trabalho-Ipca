@@ -41,6 +41,9 @@ char* getNumeroIndex(char* buffer) {
 			while (buffer[j] != ',')
 			{
 				j++;
+				if (strlen(buffer) < j) {
+					return "\0";
+				}
 			}
 			tLen = j - i;
 

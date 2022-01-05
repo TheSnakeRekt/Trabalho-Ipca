@@ -33,10 +33,7 @@ char* save_aluno(char* json) {
 		return "false";
 	}
 
-	long savedResult = saveAluno(aluno);
-	if (savedResult == 0) {
-		return "false";
-	}
+	long savedResult = saveAluno(aluno, "a+");
 
 	return "true";
 }
@@ -49,10 +46,43 @@ char* mod_aluno(char* json) {
 		return "false";
 	}
 
-	long savedResult = saveAluno(aluno);
+	long savedResult = saveAluno(aluno,"w+");
 	if (savedResult == 0) {
 		return "false";
 	}
 	return "true";
 }
 
+char* delete_aluno(char* nMeca) {
+
+	char* alunosBuffer = allAlunos();
+	if (strlen(alunosBuffer) < 1) {
+		return "false";
+	}
+
+	AlunoArray* alunos = alunosFromBuffer(alunosBuffer);
+	int written = 0;
+
+	if (&alunos->aluno != NULL) {
+		if (strcmp(alunos->aluno.n_mecanografico, nMeca) == 0) {
+			saveAluno(NULL, "w+");
+		}
+	}
+
+	while (alunos->next != NULL) {
+		if (strcmp(alunos->aluno.n_mecanografico, nMeca) == 0) {
+			alunos = alunos->next;
+		}
+		if (written == 0) {
+			saveAluno(&alunos->aluno, "w+");
+		}
+		else {
+			saveAluno(&alunos->aluno, "a+");
+		}
+
+		written++;
+		alunos = alunos->next;
+	}
+
+	return "true";
+}

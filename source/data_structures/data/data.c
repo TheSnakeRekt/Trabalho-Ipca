@@ -24,7 +24,7 @@ char* serializeData(Data* dat) {
 	size_t len = 0;
 	len = snprintf(NULL, len, "%d-%d-%d", dat->ano, dat->mes, dat->dia);
 
-	dat->string = (char*)malloc(len);
+	dat->string = (char*)malloc(len + 1);
 	int signed totalB = snprintf(dat->string, len + 1, "%d-%d-%d", dat->ano, dat->mes, dat->dia);
 
 	if (totalB > len + 1) {

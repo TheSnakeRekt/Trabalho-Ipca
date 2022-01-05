@@ -37,4 +37,4 @@ typedef void (*alterarCurso)(struct Aluno* self, Curso c);
 
  Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Morada morada, Curso curso);
  char* serializeAluno(Aluno* al);
- long saveAluno(Aluno* self);
+ long saveAluno(Aluno* aluno, char* mode);

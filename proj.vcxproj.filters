@@ -58,6 +58,12 @@
     <Filter Include="Header Files\lib\curso">
       <UniqueIdentifier>{033bbe9f-e63b-44cf-ac97-e9e7850f3313}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lib\morada">
+      <UniqueIdentifier>{1fe6cd36-0bb0-42ae-abfa-c53a1570cac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib\data">
+      <UniqueIdentifier>{ad7e328e-0f26-4ecb-a3a2-81b324cc830a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.c">
@@ -116,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="source\lib\curso\curso.repo.lib.c">
       <Filter>Header Files\lib\curso</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\morada\morada.lib.c">
+      <Filter>Header Files\lib\morada</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\data\data.lib.c">
+      <Filter>Header Files\lib\data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="source\lib\curso\curso.repo.lib.h">
       <Filter>Header Files\lib\curso</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\morada\morada.lib.h">
+      <Filter>Header Files\lib\morada</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\data\data.lib.h">
+      <Filter>Header Files\lib\data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

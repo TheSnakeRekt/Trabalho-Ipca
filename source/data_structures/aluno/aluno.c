@@ -23,7 +23,7 @@ void alterar_curso(Aluno* self, Curso curso) {
 
 Aluno* create_aluno(char* nome, char* n_mecanografico, Data dataNascimento, Morada morada, Curso curso) {
 
-	Aluno* obj = (Aluno*)malloc(sizeof(Aluno));
+	Aluno* obj = malloc(sizeof(Aluno));
 
 	if (obj == NULL) {
 		return NULL;
@@ -65,12 +65,22 @@ char* serializeAluno(Aluno* al) {
 	return al->string;
 }
 
-long saveAluno(Aluno* aluno) {
-	FILE* fp = open_file(ALUNOS_FILE_PATH);
+long saveAluno(Aluno* aluno, char* mode) {
+	if(aluno == NULL){
+		FILE* fp = fopen(ALUNOS_FILE_PATH, mode);
+		write_file("\0", fp);
+		fp = fopen(ALUNOS_INDEX_FILE_PATH, mode);
+		write_file("\0", fp);
+		fp = fopen(ALUNOS_CURSO_FILE_PATH, mode);
+		write_file("\0", fp);
+		return 0;
+	}
+
+	FILE* fp = fopen(ALUNOS_FILE_PATH, mode);
 	long index = write_file(aluno->string, fp);
 	fclose(fp);
 
-	fp = open_file(ALUNOS_INDEX_FILE_PATH);
+	fp = fopen(ALUNOS_INDEX_FILE_PATH, mode);
 	int len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->n_mecanografico, aluno->nome);
 
 	char* aluno_index = (char*) malloc(len + 1);
@@ -81,20 +91,19 @@ long saveAluno(Aluno* aluno) {
 
 	free(aluno_index);
 
-	fp = open_file(ALUNOS_CURSO_FILE_PATH);
+	fp = fopen(ALUNOS_CURSO_FILE_PATH, mode);
 
 	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.numero, aluno->n_mecanografico);
 
 	char* aluno_curso = (char*)malloc(len + 1);
 
-	snprintf(aluno_curso, len + 1, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.nome, aluno->n_mecanografico);
+	snprintf(aluno_curso, len + 1, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.numero, aluno->n_mecanografico);
 	write_file(aluno_curso, fp);
 	fclose(fp);
 	
 
 	if (index < 0) {
 		perror("Error while saving Aluno %s\n", aluno->n_mecanografico);
-		return 0;
 	}
 
 	return index;
