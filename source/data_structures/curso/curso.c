@@ -36,29 +36,28 @@ char* serializeCurso(Curso* cu)
 }
 
 int cursoExists(char* buffer,char* value) {
-	int pos = 0;
 	char* curso;
 
 	for (int i = 0; i < strlen(buffer); i++) {
 		if (buffer[i] == ';') {
 			curso = (char*) malloc(i + 2);
-			sprintf(curso, "%.*s;\n", i, &buffer[pos]);
+			sprintf(curso, "%.*s;\n", i, buffer);
 			if (strcmp(curso, value) == 0) {
-				return pos;
+				return 1;
 			}
 		}
 	}
 
-	return -1;
+	return 0;
 }
 
 long saveCurso(Curso* curso) {
 	FILE* fp = open_file(CURSOS_FILE_PATH);
 	char* fBuffer = read_file(fp);
 
-	int existingPos = cursoExists(fBuffer, curso->string);
-	if (existingPos >= 0) {
-		return existingPos;
+	if (cursoExists(fBuffer, curso->string) == 1) {
+		perror("Este curso já existe");
+		return 0;
 	}
 
 	fp = open_file(CURSOS_FILE_PATH);
@@ -70,5 +69,5 @@ long saveCurso(Curso* curso) {
 		return 0;
 	}
 
-	return i;
+	return 1;
 }

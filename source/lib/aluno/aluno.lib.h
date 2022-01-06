@@ -24,5 +24,5 @@ char* getDataNascimentoAluno(char* aluno);
 char* getMoradaAluno(char* aluno);
 char* getCursoAluno(char* aluno);
 char* getAlunoFromBuffer(char* buffer, long size);
-Aluno* alunoFromJson(char* json);
+Aluno* alunoFromJson(char* json, int update);
 AlunoArray* alunosFromBuffer(char* buffer);

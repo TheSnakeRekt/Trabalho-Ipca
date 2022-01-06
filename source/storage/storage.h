@@ -12,7 +12,6 @@ struct stat st;
 const char* BASE_DIR;
 
 const char* ALUNOS_INDEX_FILE_PATH;
-const char* CURSO_INDEX_FILE_PATH;
 
 const char* ALUNOS_FILE_PATH;
 const char* CURSOS_FILE_PATH;
@@ -21,7 +20,7 @@ const char* ALUNOS_CURSO_FILE_PATH;
 
 const int STORAGE_LENGTH;
 
-const char* STORAGE_NAME[5];
+const char* STORAGE_NAME[4];
 
 
 FILE* open_file(const char* fileName);

@@ -27,7 +27,7 @@ char* select_aluno(int prop, char* value) {
 */
 char* save_aluno(char* json) {
 
-	Aluno* aluno = alunoFromJson(json);
+	Aluno* aluno = alunoFromJson(json, 0);
 
 	if (aluno == NULL) {
 		return "false";
@@ -40,16 +40,45 @@ char* save_aluno(char* json) {
 
 char* mod_aluno(char* json) {
 
-	Aluno* aluno = alunoFromJson(json);
+	Aluno* alunoUpdated = alunoFromJson(json, 1);
 
-	if (aluno == NULL) {
+	if (alunoUpdated == NULL) {
 		return "false";
 	}
 
-	long savedResult = saveAluno(aluno,"w+");
-	if (savedResult == 0) {
+	char* oldNumero = get_value(json, "numero");
+	char* alunosBuffer = allAlunos();
+
+	if (strlen(alunosBuffer) < 1) {
 		return "false";
 	}
+
+	AlunoArray* alunos = alunosFromBuffer(alunosBuffer);
+	int written = 0;
+
+
+	if (&alunos->aluno != NULL) {
+		if (strcmp(alunos->aluno.n_mecanografico, oldNumero) == 0) {
+			saveAluno(alunoUpdated, "w+");
+		}
+	}
+
+	while (alunos->next != NULL) {
+		if (strcmp(alunos->aluno.n_mecanografico, oldNumero) == 0) {
+			saveAluno(alunoUpdated, "w+");
+			alunos = alunos->next;
+		}
+		if (written == 0) {
+			saveAluno(&alunos->aluno, "w+");
+		}
+		else {
+			saveAluno(&alunos->aluno, "a+");
+		}
+
+		written++;
+		alunos = alunos->next;
+	}
+
 	return "true";
 }
 

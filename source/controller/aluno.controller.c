@@ -1,10 +1,7 @@
 #include "aluno.controller.h"
 
 char* update_aluno(char* data) {
-	char* nMeca = get_value(data, "n_meca");
-	char* alunoBuffer = select_aluno(N_Mecanografico_A, nMeca);
-
-	return mod_aluno(alunoBuffer);
+	return mod_aluno(data);
 }
 
 char* remove_aluno(char* data) {

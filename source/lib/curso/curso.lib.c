@@ -60,10 +60,10 @@ char* getCursoNumero(char* buffer) {
 }
 
 Curso* cursoFromJson(char* json) {
-	char* nomeCurso = get_value(json, "nome");
+	char* nomeCurso = get_value(json, "curso");
 	char* nCurso = get_value(json, "n_curso");
 
-	if (strcmp("null", nomeCurso) || strcmp("null", nCurso)) {
+	if (strcmp("null", nomeCurso) == 0 || strcmp("null", nCurso) == 0) {
 		return NULL;
 	}
 

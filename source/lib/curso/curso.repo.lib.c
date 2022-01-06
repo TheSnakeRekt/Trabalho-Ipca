@@ -25,10 +25,9 @@ char* save_curso(char* json) {
 	if (curso != NULL) {
 		long savedCurso = saveCurso(curso);
 
-		if (savedCurso < 0) {
-			perror("Falha ao criar elementos do aluno");
+		if (savedCurso != 0) {
+			result = "true";
 		}
-		result = "true";
 	}
 
 	return result;

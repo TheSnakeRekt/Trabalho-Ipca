@@ -234,18 +234,20 @@ AlunoArray* alunosFromBuffer(char* buffer) {
 	return alunoArray;
 }
 
-Aluno* alunoFromJson(char* json) {
+Aluno* alunoFromJson(char* json, int update) {
 	signed int mes, dia, ano;
 	int nPorta;
 
 	char* nome = get_value(json, "nome");
 	char* numero = get_value(json, "numero");
 
-	if (alunoExists(numero) == 1) {
+
+	if (alunoExists(numero) == 1 && update == 0) {
 		perror("O Aluno ja existe.");
 		return NULL;
 	}
 
+	numero = get_value(json, "numero");
 	mes = atoi(get_value(json, "mes"));
 	dia = atoi(get_value(json, "dia"));
 	ano = atoi(get_value(json, "ano"));
@@ -262,6 +264,23 @@ Aluno* alunoFromJson(char* json) {
 	if (dataNascimento == NULL || morada == NULL) {
 		perror("Falha ao criar elementos do aluno");
 		return "false";
+	}
+
+	if (update == 1) {
+		char* buffer = alunoByNumero(get_value(json,"oldNumero"));
+		AlunoArray* arrayAluno = alunosFromBuffer(buffer);
+
+		
+		if (&arrayAluno->aluno != NULL) {
+			arrayAluno->aluno.alterarCurso(&arrayAluno->aluno, *curso);
+			arrayAluno->aluno.alterarMorada(&arrayAluno->aluno, *morada);
+			arrayAluno->aluno.alterarDataNascimento(&arrayAluno->aluno, *dataNascimento);
+			arrayAluno->aluno.alterarNumeroMecanografico(&arrayAluno->aluno, numero);
+			arrayAluno->aluno.alterarNome(&arrayAluno->aluno, nome);
+			serializeAluno(&arrayAluno->aluno);
+		}
+
+		return &arrayAluno->aluno;
 	}
 
 	return create_aluno(nome, numero, *dataNascimento, *morada, *curso);
