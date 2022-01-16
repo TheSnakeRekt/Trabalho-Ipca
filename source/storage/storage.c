@@ -1,23 +1,14 @@
 #pragma once
 #include "storage.h"
 
-struct stat st = {0};
-const char* BASE_DIR = "C:\\projeto";
-
-const char* ALUNOS_INDEX_FILE_PATH = "C:\\projeto\\alunos.index.storage";
-
-const char* ALUNOS_FILE_PATH = "C:\\projeto\\alunos.storage";
-const char* CURSOS_FILE_PATH = "C:\\projeto\\cursos.storage";
-
-const char* ALUNOS_CURSO_FILE_PATH = "C:\\projeto\\alunos_curso.storage";
 
 const int STORAGE_LENGTH = 4;
 
 const char* STORAGE_NAME[4] = {
-	"C:\\projeto\\alunos.index.storage",
-	"C:\\projeto\\alunos.storage",
-	"C:\\projeto\\cursos.storage",
-	"C:\\projeto\\alunos_curso.storage",
+	".\\dist\\backend\\alunos.index.storage",
+	".\\dist\\backend\\alunos.storage",
+	".\\dist\\backend\\cursos.storage",
+	".\\dist\\backend\\alunos_curso.storage",
 };
 
 FILE* open_file(const char* fileName) {
@@ -28,21 +19,26 @@ FILE* openw_file(const char* fileName) {
 	return fopen(fileName, "w+");
 }
 
+char* fullpath(int i) {
+	DWORD len = GetFullPathNameA(STORAGE_NAME[i], NULL, NULL, NULL);
+	char* pathBuffer = (char *) malloc (len);
+	GetFullPathNameA(STORAGE_NAME[i], len, pathBuffer, NULL);
+	return pathBuffer;
+}
+
 int filehandle_init() {
 
 	int i = 0;
 
-	if (stat(BASE_DIR, &st) == -1) {
-		CreateDirectoryA(BASE_DIR, NULL);
-		filehandle_init();
-	}
 	for (i = 0; i < STORAGE_LENGTH; i++) {
-		FILE* fp = fopen(STORAGE_NAME[i], "a+");
 
+		FILE* fp = fopen(fullpath(i), "a+");
+	
 		if (!fp) {
 			perror("fopen");
 			continue;
 		}
+
 		fputs("", fp);
 		fclose(fp);
 	}
@@ -56,6 +52,7 @@ char* read_file(FILE* fp) {
 
 	if (fseek(fp, 0L, SEEK_END) == 0) {
 		long bufsize = ftell(fp);
+
 		if (bufsize == -1) { 
 			perror("Error reading file"); 
 		}

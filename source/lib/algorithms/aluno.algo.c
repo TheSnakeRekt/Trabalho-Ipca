@@ -4,7 +4,7 @@ char* alunosByName(char* value) {
 	char* alunosFound = NULL;
 	
 
-	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
+	FILE* alunos = open_file(fullpath(ALUNOS_INDEX_FILE_PATH));
 	char* file = read_file(alunos);
 
 	long index[2];
@@ -36,7 +36,7 @@ char* alunosByName(char* value) {
 			found = NULL;
 
 			getIndiceAndSizeIndex(alunoBuffer, index);
-			alunos = open_file(ALUNOS_FILE_PATH);
+			alunos = open_file(fullpath(ALUNOS_FILE_PATH));
 
 			
 			char* fileFromPos = readFromBufferPos(alunos, index[0]);
@@ -65,7 +65,7 @@ char* alunosByName(char* value) {
 char* alunoByNumero(char* value) {
 	char* alunoEncontrado = NULL;
 
-	FILE* alunos = open_file(ALUNOS_INDEX_FILE_PATH);
+	FILE* alunos = open_file(fullpath(ALUNOS_INDEX_FILE_PATH));
 	char* file = read_file(alunos);
 
 	long index[2];
@@ -89,7 +89,7 @@ char* alunoByNumero(char* value) {
 
 			getIndiceAndSizeIndex(alunoBuffer, index);
 
-			alunos = open_file(ALUNOS_FILE_PATH);
+			alunos = open_file(fullpath(ALUNOS_FILE_PATH));
 
 			char* fileFromPos = readFromBufferPos(alunos, index[0]);
 
@@ -108,7 +108,7 @@ char* alunosByCurso(char* value) {
 	char* alunosFound = NULL;
 
 
-	FILE* alunos = open_file(ALUNOS_CURSO_FILE_PATH);
+	FILE* alunos = open_file(fullpath(ALUNOS_CURSO_FILE_PATH));
 	char* file = read_file(alunos);
 
 	long index[2];
@@ -136,7 +136,7 @@ char* alunosByCurso(char* value) {
 		if (strcmp(nCursoEncontrado, value) == 0) {
 
 			getIndiceAndSizeIndex(curso_aluno, index);
-			alunos = open_file(ALUNOS_FILE_PATH);
+			alunos = open_file(fullpath(ALUNOS_FILE_PATH));
 
 
 			char* fileFromPos = readFromBufferPos(alunos, index[0]);
@@ -163,7 +163,7 @@ char* alunosByCurso(char* value) {
 }
 
 char* allAlunos() {
-	FILE* alunos = open_file(ALUNOS_FILE_PATH);
+	FILE* alunos = open_file(fullpath(ALUNOS_FILE_PATH));
 	char* allAlunos = read_file(alunos);
 
 	return allAlunos;

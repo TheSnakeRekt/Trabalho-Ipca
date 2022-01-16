@@ -52,7 +52,7 @@ int cursoExists(char* buffer,char* value) {
 }
 
 long saveCurso(Curso* curso) {
-	FILE* fp = open_file(CURSOS_FILE_PATH);
+	FILE* fp = open_file(fullpath(CURSOS_FILE_PATH));
 	char* fBuffer = read_file(fp);
 
 	if (cursoExists(fBuffer, curso->string) == 1) {
@@ -60,7 +60,7 @@ long saveCurso(Curso* curso) {
 		return 0;
 	}
 
-	fp = open_file(CURSOS_FILE_PATH);
+	fp = open_file(fullpath(CURSOS_FILE_PATH));
 	long i = write_file(curso->string, fp);
 	fclose(fp);
 

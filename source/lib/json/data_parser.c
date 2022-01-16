@@ -1,5 +1,6 @@
 #include "data_parser.h"
 
+/*Compara se o token encontrado através do parser é igual á Key que desejamos encontrar*/
 int jsoneq(const char* json, jsmntok_t* tok, const char* s) {
 	if (tok->type == JSMN_STRING && (int)strlen(s) == tok->end - tok->start &&
 		strncmp(json + tok->start, s, tok->end - tok->start) == 0) {
@@ -8,6 +9,8 @@ int jsoneq(const char* json, jsmntok_t* tok, const char* s) {
 	return -1;
 }
 
+
+/*Procura o valor da associado a uma Key num buffer de formato JSON*/
 char* get_value(char* json, char* key) {
 	jsmn_parser p;
 	jsmntok_t t[255];

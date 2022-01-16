@@ -9,6 +9,7 @@ char* execute(int domain, int op_type, char* data);
 
 void main(int argc, char* argv[]) {
 	
+	
 	if (argc < 2) {
 		printf("%d ficheiros foram criados", filehandle_init());
 		return;

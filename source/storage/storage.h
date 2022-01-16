@@ -6,23 +6,18 @@
 #include <sys/stat.h>
 #include <string.h>
 
-
-struct stat st;
-
-const char* BASE_DIR;
-
-const char* ALUNOS_INDEX_FILE_PATH;
-
-const char* ALUNOS_FILE_PATH;
-const char* CURSOS_FILE_PATH;
-
-const char* ALUNOS_CURSO_FILE_PATH;
+const enum FILENAMES {
+	ALUNOS_INDEX_FILE_PATH = 0,
+	ALUNOS_FILE_PATH = 1,
+	CURSOS_FILE_PATH = 2,
+	ALUNOS_CURSO_FILE_PATH = 3
+};
 
 const int STORAGE_LENGTH;
-
 const char* STORAGE_NAME[4];
 
 
+char* fullpath(int i);
 FILE* open_file(const char* fileName);
 int filehandle_init();
 char* read_file(FILE* fp);

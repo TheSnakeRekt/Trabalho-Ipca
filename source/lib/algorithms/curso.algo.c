@@ -3,7 +3,7 @@
 char* cursosByName(char* value) {
 	char* cursosFound = NULL;
 
-	FILE* alunos = open_file(CURSOS_FILE_PATH);
+	FILE* alunos = open_file(fullpath(CURSOS_FILE_PATH));
 	char* file = read_file(alunos);
 
 	for (int i = 0; i < strlen(file); i++) {
@@ -48,7 +48,7 @@ char* cursosByName(char* value) {
 char* cursoByNumero(char* value) {
 	char* cursoEncontrado = "\0";
 
-	FILE* cursos = open_file(CURSOS_FILE_PATH);
+	FILE* cursos = open_file(fullpath(CURSOS_FILE_PATH));
 	char* file = read_file(cursos);
 
 
@@ -79,7 +79,7 @@ char* cursoByNumero(char* value) {
 }
 
 char* allCursos() {
-	FILE* cursos = open_file(CURSOS_FILE_PATH);
+	FILE* cursos = open_file(fullpath(CURSOS_FILE_PATH));
 	char* allCursos = read_file(cursos);
 
 	return allCursos;

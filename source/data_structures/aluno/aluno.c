@@ -67,20 +67,20 @@ char* serializeAluno(Aluno* al) {
 
 long saveAluno(Aluno* aluno, char* mode) {
 	if(aluno == NULL){
-		FILE* fp = fopen(ALUNOS_FILE_PATH, mode);
+		FILE* fp = fopen(fullpath(ALUNOS_FILE_PATH), mode);
 		write_file("\0", fp);
-		fp = fopen(ALUNOS_INDEX_FILE_PATH, mode);
+		fp = fopen(fullpath(ALUNOS_INDEX_FILE_PATH), mode);
 		write_file("\0", fp);
-		fp = fopen(ALUNOS_CURSO_FILE_PATH, mode);
+		fp = fopen(fullpath(ALUNOS_CURSO_FILE_PATH), mode);
 		write_file("\0", fp);
 		return 0;
 	}
 
-	FILE* fp = fopen(ALUNOS_FILE_PATH, mode);
+	FILE* fp = fopen(fullpath(ALUNOS_FILE_PATH), mode);
 	long index = write_file(aluno->string, fp);
 	fclose(fp);
 
-	fp = fopen(ALUNOS_INDEX_FILE_PATH, mode);
+	fp = fopen(fullpath(ALUNOS_INDEX_FILE_PATH), mode);
 	int len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->n_mecanografico, aluno->nome);
 
 	char* aluno_index = (char*) malloc(len + 1);
@@ -91,7 +91,7 @@ long saveAluno(Aluno* aluno, char* mode) {
 
 	free(aluno_index);
 
-	fp = fopen(ALUNOS_CURSO_FILE_PATH, mode);
+	fp = fopen(fullpath(ALUNOS_CURSO_FILE_PATH), mode);
 
 	len = snprintf(NULL, 0, "%d|%d,%s,%s;\n", index, index + strlen(aluno->string), aluno->curso.numero, aluno->n_mecanografico);
 
