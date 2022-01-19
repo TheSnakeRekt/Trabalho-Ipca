@@ -2,7 +2,7 @@
 <h2> Trabalho Final de programação do ETesp de SEC do IPCA </h2>
 
 
-<b>Payloads enviados como argumentos através do front</b>
+<b>Exemplos de payloads enviados como argumentos através do front</b>
 
 - Alunos por Curso Filter:<br>
 <pre>1 0 "{\"prop\":8,\"value\":\"data\"}"</pre> 
