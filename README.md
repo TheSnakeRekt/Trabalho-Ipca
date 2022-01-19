@@ -5,7 +5,7 @@
 <b>Payloads enviados como argumentos através do front</b>
 
 - Alunos por Curso Filter:<br>
-<p>`1 0 "{\"prop\":8,\"value\":\"data\"}"`</p> 
+<pre>1 0 "{\"prop\":8,\"value\":\"data\"}"</pre> 
 
  - Alunos por Nome Filter:<br>
 <p>1 0 "{\"prop\":0,\"value\":\"Jorge\"}"</p>
