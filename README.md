@@ -14,7 +14,7 @@ Payloads enviados como argumentos através do front
 <p>1 0 "{\"prop\":2,\"value\":\"data\"}"</p> 
 
  - Apagar:<br>
-1 3 "{\"value\":\"n_aluno\"}"</p>
+<p>1 3 "{\"value\":\"n_aluno\"}"</p>
 
  - Criar Aluno:<br>
 <p>1 1 "{\"nome\":\"Jorge Guimaraes\",\"numero\":\"a23062\",\"mes\":\"04\",\"dia\":\"11\",\"ano\":\"1996\",\"rua\":\"data\",\"codPostal\":\"data-data\",\"localidade\":\"data\",\"n_porta\":\"data\",\"curso\":\"SEC\",\"n_curso\":\"A140\"}"</p>
