@@ -23,4 +23,5 @@ Payloads enviados como argumentos através do front
 <p>2 1 "{\"nome\":\"data\",\"n_curso\":\"data\"}"</p>
 
 - Modificar Aluno:<br>
-<p>1 2 "{\"nome\":\"Jorge\",\"numero\":\"data\",\"mes\":\"data\",\"dia\":\"data\",\"ano\":\"data\",\"rua\":\"data\",\"codPostal\":\"foiwefoh\",\"localidade\":\"oiewifjoi\",\"n_porta\":\"data\",\"curso\":\"data\",\"n_curso\":\"data\",\"oldNumero\":\"data\"}"</p>
+<p>1 2 "{\"nome\":\"Jorge\",\"numero\":\"data\",\"mes\":\"data\",\"dia\":\"data\",\"ano\":\"data\",\"rua\":\"data\",
+\"codPostal\":\"foiwefoh\",\"localidade\":\"oiewifjoi\",\"n_porta\":\"data\",\"curso\":\"data\",\"n_curso\":\"data\",\"oldNumero\":\"data\"}"</p>
