@@ -5,10 +5,10 @@
 const int STORAGE_LENGTH = 4;
 
 const char* STORAGE_NAME[4] = {
-	".\\dist\\backend\\alunos.index.storage",
-	".\\dist\\backend\\alunos.storage",
-	".\\dist\\backend\\cursos.storage",
-	".\\dist\\backend\\alunos_curso.storage",
+	".\\resources\\app\\dist\\backend\\alunos.index.storage",
+	".\\resources\\app\\dist\\backend\\alunos.storage",
+	".\\resources\\app\\dist\\backend\\cursos.storage",
+	".\\resources\\app\\dist\\backend\\alunos_curso.storage",
 };
 
 FILE* open_file(const char* fileName) {
@@ -31,7 +31,7 @@ int filehandle_init() {
 	int i = 0;
 
 	for (i = 0; i < STORAGE_LENGTH; i++) {
-
+		printf("%s\n", fullpath(i));
 		FILE* fp = fopen(fullpath(i), "a+");
 	
 		if (!fp) {

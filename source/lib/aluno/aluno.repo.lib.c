@@ -56,22 +56,13 @@ char* mod_aluno(char* json) {
 	AlunoArray* alunos = alunosFromBuffer(alunosBuffer);
 	int written = 0;
 
-
-	if (&alunos->aluno != NULL) {
+	while (alunos != NULL) {
 		if (strcmp(alunos->aluno.n_mecanografico, oldNumero) == 0) {
-			saveAluno(alunoUpdated, "w+");
-		}
-	}
-
-	while (alunos->next != NULL) {
-		if (strcmp(alunos->aluno.n_mecanografico, oldNumero) == 0) {
-			saveAluno(alunoUpdated, "w+");
-			alunos = alunos->next;
+			alunos->aluno = *alunoUpdated;
 		}
 		if (written == 0) {
 			saveAluno(&alunos->aluno, "w+");
-		}
-		else {
+		} else {
 			saveAluno(&alunos->aluno, "a+");
 		}
 
@@ -92,13 +83,7 @@ char* delete_aluno(char* nMeca) {
 	AlunoArray* alunos = alunosFromBuffer(alunosBuffer);
 	int written = 0;
 
-	if (&alunos->aluno != NULL) {
-		if (strcmp(alunos->aluno.n_mecanografico, nMeca) == 0) {
-			saveAluno(NULL, "w+");
-		}
-	}
-
-	while (alunos->next != NULL) {
+	while (alunos != NULL) {
 		if (strcmp(alunos->aluno.n_mecanografico, nMeca) == 0) {
 			alunos = alunos->next;
 		}
